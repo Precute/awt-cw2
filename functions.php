@@ -1,8 +1,8 @@
 <?php // Example 26-1: functions.php
-  $dbhost  = 'mudfoot.doc.stu.mmu.ac.uk' ;    // Unlikely to require changing
-  $dbname  = 'igbinoso';   // Modify these...
-  $dbuser  = 'igbinoso';   // ...variables according
-  $dbpass  = 'jesSplam6';   // ...to your installation
+  $dbhost  = 'mudfoot.doc.stu.mmu.ac.uk';    // Unlikely to require changing
+  $dbname  = 'arpalikh';   // Modify these...
+  $dbuser  = 'arpalikh';   // ...variables according
+  $dbpass  = 'Vanscerq9';   // ...to your installation
   $appname = "Robin's Nest"; // ...and preference
 
   //$dbhost = ; // the database host
