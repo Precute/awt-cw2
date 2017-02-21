@@ -1,9 +1,17 @@
 <?php // Example 26-1: functions.php
-  $dbhost  = 'mudfoot.doc.stu.mmu.ac.uk';    // Unlikely to require changing
-  $dbname  = 'arpalikh';   // Modify these...
-  $dbuser  = 'arpalikh';   // ...variables according
-  $dbpass  = 'Vanscerq9';   // ...to your installation
+  $dbhost  = 'mudfoot.doc.stu.mmu.ac.uk' ;    // Unlikely to require changing
+  $dbname  = 'igbinoso';   // Modify these...
+  $dbuser  = 'igbinoso';   // ...variables according
+  $dbpass  = 'jesSplam6';   // ...to your installation
   $appname = "Robin's Nest"; // ...and preference
+
+  //$dbhost = ; // the database host
+//$dbuser = 'igbinoso' ; 
+//$dbpass = 'jesSplam6' ; // password
+
+//$dbhost = 'mysql:host=127.0.0.1;dbname=test';
+//$dbname = 'root';
+//$dbpass = 'password';
 
   $connection = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
   if ($connection->connect_error) die($connection->connect_error);
@@ -47,7 +55,7 @@
       echo "<img src='$user.jpg' style='float:left;'>";
 
     $result = queryMysql("SELECT * FROM profiles WHERE user='$user'");
-
+    
     if ($result->num_rows)
     {
       $row = $result->fetch_array(MYSQLI_ASSOC);
