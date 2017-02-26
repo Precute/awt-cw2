@@ -12,11 +12,7 @@ CREATE TABLE IF NOT EXISTS track_location (
     constraint fk_username foreign key (username) references members (user)
  )ENGINE=INNODB;
 
-$dbhost  = 'mudfoot.doc.stu.mmu.ac.uk';    // Unlikely to require changing
-  $dbname  = 'arpalikh';   // Modify these...
-  $dbuser  = 'arpalikh';   // ...variables according
-  $dbpass  = 'Vanscerq9';   // ...to your installation
-  $appname = "Robin's Nest"; // ...and preference
+
 
  INSERT INTO track_location( username, Longitude, Latitude ) VALUES
 ('precious',53.45551661,-2.20387357),
