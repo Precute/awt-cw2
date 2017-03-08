@@ -35,6 +35,8 @@
               'user VARCHAR(16),
               text VARCHAR(4096),
               INDEX(user(6))');
+
+  
 ?>
 
     <br>...done.

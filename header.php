@@ -17,10 +17,20 @@
 
   echo "<title>$appname$userstr</title><link rel='stylesheet' " .
        "href='styles.css' type='text/css'>"                     .
-       "</head><body><center><canvas id='logo' width='624' "    .
+       "</head>".
+       "<body><center><canvas id='logo' width='624' "    .
        "height='96'>$appname</canvas></center>"             .
        "<div class='appname'>$appname$userstr</div>"            .
-       "<script src='javascript.js'></script>";
+       "<script src='javascript.js'></script>" .
+" <script async defer\n" ;
+echo "      src=\"https://maps.googleapis.com/maps/api/js?key=AIzaSyApczdYj25JGm98yRR7a2YRBIOZH5vHDxI\">\n"; 
+echo "    </script>\n" .
+"<script src=\"//ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js\"></script>";
+echo "  <script src='geolocationHomepageScript.js'>\n"; 
+echo "  </script>\n"; 
+echo "  <script type=\"text/javascript\">\n"; 
+echo "    window.onload = watchPosition;\n"; 
+echo "  </script>\n";
 
   if ($loggedin)
   {
@@ -28,7 +38,8 @@
          "<li><a href='members.php?view=$user'>Home</a></li>" .
          "<li><a href='members.php'>Members</a></li>"         .
          "<li><a href='friends.php'>Friends</a></li>"         .
-         "<li><a href='messages.php'>Messages</a></li>"       .
+         "<li><a href='#'>Location History</a></li>"       .
+          "<li><a href='messages.php'>Messages</a></li>"       .
          "<li><a href='profile.php'>Edit Profile</a></li>"    .
          "<li><a href='logout.php'>Log out</a></li></ul><br>";
   }
