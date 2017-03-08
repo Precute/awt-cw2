@@ -8,14 +8,22 @@
   if (isset($_GET['view']))
   {
     $view = sanitizeString($_GET['view']);
-    
+
     if ($view == $user) $name = "Your";
     else                $name = "$view's";
     
     echo "<h3>$name Profile</h3>";
     showProfile($view);
+
+ $lat = $_SESSION['lat'];
+ $long = $_SESSION['long'];
+    $date = date('Y-m-d h:i:s');
+    queryMysql("INSERT INTO track_location VALUES ('$view', '$long', '$lat', '$date' )");
+
     echo "<a class='button' href='messages.php?view=$view'>" .
          "View $name messages</a><br><br>";
+                echo "<div id=\"location\"></div></br>";
+   echo "<div id = \"showMap\" style= \"width:800px;height:500px\"></div>";
     die("</div></body></html>");
   }
 
