@@ -12,9 +12,9 @@ CREATE TABLE IF NOT EXISTS track_location (
     constraint fk_username foreign key (username) references members (user)
  )ENGINE=INNODB;
 
-INSERT INTO `arpalikh`.`members` (`user`, `pass`) VALUES ('precute', 'precute');
-INSERT INTO `arpalikh`.`members` (`user`, `pass`) VALUES ('tester', 'tester');
-INSERT INTO `arpalikh`.`members` (`user`, `pass`) VALUES ('precious', 'password');
+INSERT INTO `tanveeah`.`members` (`user`, `pass`) VALUES ('precute', 'precute');
+INSERT INTO `tanveeah`.`members` (`user`, `pass`) VALUES ('tester', 'tester');
+INSERT INTO `tanveeah`.`members` (`user`, `pass`) VALUES ('precious', 'password');
 
  INSERT INTO track_location( username, Longitude, Latitude ) VALUES
 ('precious',53.45551661,-2.20387357),
