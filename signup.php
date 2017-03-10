@@ -54,7 +54,7 @@
       return request
     }
   </script>
-  <div class='main'><h3>Please enter your details to sign up</h3>
+   <div class="container"> <h2>Please enter your details to sign up</h2>
 _END;
 
   $error = $user = $pass = $email = $firstname = $surname = "";
@@ -86,38 +86,66 @@ _END;
   }
 
   echo <<<_END
-    <form method='post' action='signup.php' form id='myform'> $error
+ 
+    <form method='post' action='signup.php' class="form-horizontal" id='myform'> $error
     
-    <span class='fieldname'>Username</span>
-    <input type='text' maxlength='16' name='user' value='$user'
-      onBlur='checkUser(this)'><span id='info'></span><br>
-  
-    <span class='fieldname'>Password</span>
-    <input type='text' maxlength='16' name='pass'
-      value='$pass'><br>
+    <div class="form-group">
+      <label class="control-label col-sm-2" >Username:</label>
+      <div class="col-sm-10">
+        <input  type='text' maxlength='16' name='user' value='$user'
+      onBlur='checkUser(this)' class="form-control"  placeholder="Enter Username">
+      </div>
+    </div>
+
+   
+    
+    <div class="form-group">
+      <label class="control-label col-sm-2" >Password:</label>
+      <div class="col-sm-10">
+        <input  type='text' maxlength='16' name='pass' value='$pass'
+      onBlur='checkUser(this)' class="form-control"  placeholder="Enter Password">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="control-label col-sm-2" >Confirm Password:</label>
+      <div class="col-sm-10">
+        <input  type='text' maxlength='16' name='confirmpass' value='$confirmpass'
+      onBlur='checkUser(this)' class="form-control"  placeholder="Confirm Password">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="control-label col-sm-2" >Email:</label>
+      <div class="col-sm-10">
+        <input  type='text' maxlength='60' name='email' value='$email'
+      onBlur='checkUser(this)' class="form-control"  placeholder="Enter Email">
+      </div>
+    </div>
+
       
-    <span class='fieldname'>Email</span>
-    <input type='text' maxlength='60' name='email'
-      value='$email'><br>
-      
-      <br>
-      
-    <span class='fieldname'>Firstname</span>
-    <input type='text' maxlength='60' name='firstname'
-    value='$firstname'><br>
+    <div class="form-group">
+      <label class="control-label col-sm-2" >Firstname:</label>
+      <div class="col-sm-10">
+        <input  type='text' maxlength='60' name='firstname' value='$firstname'
+      onBlur='checkUser(this)' class="form-control"  placeholder="Enter Firstname">
+      </div>
+    </div>
     
-    <span class='fieldname'>Surname</span>
-    <input type='text' maxlength='60' name='surname'
-    value='$surname'><br>
-    
-    <FORM name ="form1" method ="post" action ="radioButton.php">
-   <Input type = 'Radio' Name ='gender' value= '$male'
-   <?PHP print $male_status; ?>
-   Male
-   <Input type = 'Radio' Name ='gender' value= '$female' 
-   <?PHP print $female_status; ?>
-   Female
-    
+<div class="form-group">
+      <label class="control-label col-sm-2" >Surname:</label>
+      <div class="col-sm-10">
+        <input  type='text' maxlength='16' name='surname' value='$surname'
+      onBlur='checkUser(this)' class="form-control"  placeholder="Enter Surname">
+      </div>
+    </div>
+    <label class="control-label col-sm-2" >Gender:</label>
+    <div class="radio-inline">
+      <label><input type="radio" name="optradio" value= '$male' >Male</label>
+    </div>
+    <div class="radio-inline">
+      <label><input type="radio" name="optradio" value= '$female' >Female</label>
+    </div>
     <br>
 
 _END;
@@ -142,8 +170,16 @@ _END;
 
 
     <span class='fieldname'>&nbsp;</span>
-    <input type='submit' value='Sign up'>
-    </form></div><br>
+
+<div class="form-group">        
+      <div class="col-sm-offset-2 col-sm-10">
+        <button type="submit" value='Sign up' class="btn btn-default"><span class="glyphicon glyphicon-user" style="margin-right: 0.5em"></span>Create Account</button>
+      </div>
+    </div>
+
+    </form>
+
+  </div><br>
     
     <script>
 $(document).ready(function(){ 
@@ -169,5 +205,6 @@ function submitForm (){
   form.submit();
 }
 </script>
+
   </body>
 </html>

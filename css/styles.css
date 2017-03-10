@@ -5,11 +5,10 @@
   font-size  :14pt;
 }
 
-body {
-  width     :900px;
-  margin    :20px auto;
-  background:#f8f8f8;
-  border    :1px solid #888;
+#mybody {
+  background: #f6f3f1;
+  border: 1px solid;
+
 }
 
 html {
@@ -33,10 +32,7 @@ li a:hover, .button:hover {
 }
  
 .appname {
-  text-align :center;
-  background :#eb8;
-  color      :#40d;
-  font-family:helvetica;
+  background :#7f848e;
   font-size  :20pt;
   padding    :4px;
 }
@@ -98,8 +94,11 @@ border  :1px solid green;
   font-style:italic;
   color     :#006600;
 }
-
+#divlogo{
+   background :#7f848e;
+}
 #logo {
+ 
   font-family:Georgia;
   font-weight:bold;
   font-style:italic;
@@ -118,3 +117,11 @@ border  :1px solid green;
   padding-left: 10px;
 }
 
+#indexImg{
+  position: absolute;
+  left: 50%;
+  z-index: 5;
+  height: 25%;
+  width: 25%;
+
+}
