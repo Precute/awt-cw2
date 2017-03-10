@@ -6,16 +6,21 @@ var latLong, startLat, startLong;
 var uMaps;
 var geocoder;
 var start = 1;
-var map;
+//var map;
 
-function watchPosition() {
+
+function getCurrentPosition() {
     if (navigator.geolocation) {
-        watchId = navigator.geolocation.watchPosition(successCallback, failPosition, {
+        watchId = navigator.geolocation.getCurrentPosition(successCallback, failPosition, {
             enableHighAccuracy: true,
             timeout: 5 * 60 * 10000,
             maximumAge: 60 * 000
                 //positionOptions.enableHighAccuracy: false			
         });
+        navigator.geolocation.getCurrentPosition(successPosition, failPosition, {
+                enableHighAccuracy : false,
+                //positionOptions.enableHighAccuracy: false         
+            });
     } else {
         document.getElementById("location").innerHTML = "Your browser does not support HTMLS Golocation API";
     }
@@ -60,8 +65,7 @@ function successCallback(watch) {
                 locationAddress = results[0].formatted_address;
                 locationAddress2 = results[1].formatted_address;
                 var markerTitle = results[0].address_components[1].long_name;
-                document.getElementById("location").innerHTML = "These are the people using Robin's Nest around your current location";
-
+                
                 var mapOption = {
                     center: new google.maps.LatLng(startLat, startLong),
                     zoom: 14,
@@ -69,7 +73,7 @@ function successCallback(watch) {
                     fullscreenControl: true
                 };
 
-                map = new google.maps.Map(document.getElementById("showMap"), mapOption)
+                var map = new google.maps.Map(document.getElementById("showMap"), mapOption)
                 var marker = new google.maps.Marker({
                     position: new google.maps.LatLng(startLat, startLong),
                     map: map,
@@ -95,6 +99,11 @@ function successCallback(watch) {
 
 }
 
+function successPosition(memberPosition){
+
+
+}
+
 function failPosition(error) {
     var errorCode;
     if (error.code == 1) {
@@ -111,22 +120,38 @@ function failPosition(error) {
 
 }
 
+
+      function geocodeAddress(geocoder, resultsMap) {
+        var address = document.getElementById('address').value;
+        geocoder.geocode({'address': address}, function(results, status) {
+          if (status === 'OK') {
+            resultsMap.setCenter(results[0].geometry.location);
+            var marker = new google.maps.Marker({
+              map: resultsMap,
+              position: results[0].geometry.location
+            });
+          } else {
+            alert('Geocode was not successful for the following reason: ' + status);
+          }
+        });
+      }
+
  //This javascript will load when the page loads.
-    jQuery(document).ready(function($){
+    $(function(){
  
             
         
             var markersArray = [];
             var infos = [];
  
-            geocoder1 = new google.maps.Geocoder();
+            var myGeocoder = new google.maps.Geocoder();
             var myOptions = {
                   zoom: 18,
                   mapTypeId: google.maps.MapTypeId.ROADMAP,
                   fullscreenControl: true
                 }
             //Load the Map into the map_canvas div
-            var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+           var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
             map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
  
             //Initialize a variable that the auto-size the map to whatever you are plotting
@@ -149,14 +174,29 @@ function failPosition(error) {
                 addressDetails = stringArray[x].split("&&&");
                 //Load the lat, long data
                 var lat = new google.maps.LatLng(addressDetails[1], addressDetails[2]);
+               
                 //Create a new marker and info window
                 marker = new google.maps.Marker({
                     map: map,
+                    icon: {
+                        path: "M27.648 -41.399q0 -3.816 -2.7 -6.516t-6.516 -2.7 -6.516 2.7 -2.7 6.516 2.7 6.516 6.516 2.7 6.516 -2.7 2.7 -6.516zm9.216 0q0 3.924 -1.188 6.444l-13.104 27.864q-0.576 1.188 -1.71 1.872t-2.43 0.684 -2.43 -0.684 -1.674 -1.872l-13.14 -27.864q-1.188 -2.52 -1.188 -6.444 0 -7.632 5.4 -13.032t13.032 -5.4 13.032 5.4 5.4 13.032z",
+                        scale: 0.6,
+                        strokeWeight: 0.2,
+                        strokeColor: 'black',
+                        strokeOpacity: 1,
+                        fillColor: 'green',
+                        fillOpacity: 0.85,
+                    },
                     position: lat,
                     //Content is what will show up in the info window
                     content: addressDetails[0]
                 });
-                //Pushing the markers into an array so that it's easier to manage them
+               
+
+        document.getElementById('submit').addEventListener('click', function() {
+          geocodeAddress(myGeocoder, map);
+        });
+                                //Pushing the markers into an array so that it's easier to manage them
                 markersArray.push(marker);
                 google.maps.event.addListener( marker, 'click', function () {
                     closeInfos();
@@ -181,3 +221,7 @@ function failPosition(error) {
             }
  
     });
+
+
+
+
