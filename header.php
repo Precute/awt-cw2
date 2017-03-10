@@ -16,17 +16,17 @@
   else $loggedin = FALSE;
 
   echo "<title>$appname$userstr</title><link rel='stylesheet' " .
-       "href='styles.css' type='text/css'>"                     .
+       "href='css/styles.css' type='text/css'>"                     .
        "</head>".
        "<body><center><canvas id='logo' width='624' "    .
        "height='96'>$appname</canvas></center>"             .
        "<div class='appname'>$appname$userstr</div>"            .
        "<script src=\"//ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js\"></script>" .
-       "<script src='javascript.js'></script>" .
+       "<script src='js/javascript.js'></script>" .
        " <script async defer\n" .
        "      src=\"https://maps.googleapis.com/maps/api/js?key=AIzaSyApczdYj25JGm98yRR7a2YRBIOZH5vHDxI\">\n".
        "    </script>\n" .
-       "  <script src='geolocationHomepageScript.js'>\n" .
+       "  <script src='js/geolocationHomepageScript.js'>\n" .
        "  </script>\n"; 
   echo "  <script type=\"text/javascript\">\n"; 
   echo "    window.onload = getCurrentPosition;\n"; 
