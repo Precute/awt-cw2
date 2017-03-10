@@ -44,10 +44,21 @@ li a:hover, .button:hover {
 .fieldname {
   float:left;
   width:120px;
+
+}
+.main{
+ overflow: auto;
+ 
 }
 
-.main {
-  margin-left:40px;
+.mainList {
+  margin-left:2px;
+  width: 450px;
+}
+#memberMap{
+float: right;
+width: 450px;
+border  :1px solid green;
 }
 
 .info {
@@ -94,3 +105,16 @@ li a:hover, .button:hover {
   font-style:italic;
   font-size :97px;
 }
+#floating-panel {
+  position: absolute;
+  left: 55%;
+  z-index: 5;
+  background-color: #fff;
+  padding: 5px;
+  border: 1px solid #999;
+  text-align: center;
+  font-family: 'Roboto','sans-serif';
+  line-height: 30px;
+  padding-left: 10px;
+}
+

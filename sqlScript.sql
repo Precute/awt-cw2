@@ -12,7 +12,9 @@ CREATE TABLE IF NOT EXISTS track_location (
     constraint fk_username foreign key (username) references members (user)
  )ENGINE=INNODB;
 
-
+INSERT INTO `tanveeah`.`members` (`user`, `pass`) VALUES ('precute', 'precute');
+INSERT INTO `tanveeah`.`members` (`user`, `pass`) VALUES ('tester', 'tester');
+INSERT INTO `tanveeah`.`members` (`user`, `pass`) VALUES ('precious', 'password');
 
  INSERT INTO track_location( username, Longitude, Latitude ) VALUES
 ('precious',53.45551661,-2.20387357),
@@ -38,3 +40,14 @@ CREATE TABLE IF NOT EXISTS track_location (
 ('precute',53.44895278, -2.28943837),
 ('tester',53.45877473, -2.27989024),
 ('tester',53.43667437, -2.2149833);
+
+
+/** to select mutual friends**/
+select friends.user, friends.friend, track_location.Longitude, track_location.Latitude, track_location.timeinserted
+from track_location
+join  friends 
+where friends.user ="precute"
+group by user;
+
+/** to select my followers **/
+
