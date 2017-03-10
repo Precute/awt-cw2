@@ -2,17 +2,28 @@
   require_once 'header.php';
   include_once 'indexLocation.php';
 
-  echo "<br><span class='main'>Welcome to $appname,";
 
-  if ($loggedin) echo " $user, you are logged in.";
-  else           echo ' please sign up and/or log in to join in.';
 ?>
+<div class="jumbotron">
+<?php
+
+  echo "<h1>Welcome to $appname!!!</h1>" ;
+?>
+
+  <?php
+  if ($loggedin) echo " <p>$user, you are logged in.</>";
+  else           echo ' <p>please sign up and/or log in to join in.</p>';
+?>
+  <p><a class="btn btn-primary btn-lg" href="login.php" role="button">Connect with the People around You!!</a></p>
+
+</div>
+
      <div id="location"></div></br></br>
      <div id="floating-panel">
       <input id="address" type="textbox" value="Salford">
       <input id="submit" type="button" value="Search">
     </div>
-     <div id='map_canvas' style= "width:900px;height:500px"></div>
+     <div id='map_canvas' style= "width:100%;height:500px"></div>
 
     <div id='input'>
 
@@ -23,4 +34,6 @@
 
    
   </body>
+
+
 </html>
