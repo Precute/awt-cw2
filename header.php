@@ -21,16 +21,18 @@
        "<body><center><canvas id='logo' width='624' "    .
        "height='96'>$appname</canvas></center>"             .
        "<div class='appname'>$appname$userstr</div>"            .
+       "<script src=\"//ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js\"></script>" .
        "<script src='javascript.js'></script>" .
-" <script async defer\n" ;
-echo "      src=\"https://maps.googleapis.com/maps/api/js?key=AIzaSyApczdYj25JGm98yRR7a2YRBIOZH5vHDxI\">\n"; 
-echo "    </script>\n" .
-"<script src=\"//ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js\"></script>";
-echo "  <script src='geolocationHomepageScript.js'>\n"; 
-echo "  </script>\n"; 
-echo "  <script type=\"text/javascript\">\n"; 
-echo "    window.onload = watchPosition;\n"; 
-echo "  </script>\n";
+       " <script async defer\n" .
+       "      src=\"https://maps.googleapis.com/maps/api/js?key=AIzaSyApczdYj25JGm98yRR7a2YRBIOZH5vHDxI\">\n".
+       "    </script>\n" .
+       "  <script src='geolocationHomepageScript.js'>\n" .
+       "  </script>\n"; 
+  echo "  <script type=\"text/javascript\">\n"; 
+  echo "    window.onload = getCurrentPosition;\n"; 
+  echo "  </script>\n";
+
+
 
   if ($loggedin)
   {

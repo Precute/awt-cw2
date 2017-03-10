@@ -21,12 +21,11 @@
     queryMysql("INSERT INTO track_location VALUES ('$view', '$long', '$lat', '$date' )");
 
     echo "<a class='button' href='messages.php?view=$view'>" .
-         "View $name messages</a><br><br>";
-                echo "<div id=\"location\"></div></br>";
-   echo "<div id = \"showMap\" style= \"width:800px;height:500px\"></div>";
-    die("</div></body></html>");
+         "View $name messages</a><br><br>" .
+          "<div id=\"location\"></div></br>" .
+          "<div id = \"showMap\" style= \"width:800px;height:500px\"></div>";
+           die("</div></body></html>");
   }
-
   if (isset($_GET['add']))
   {
     $add = sanitizeString($_GET['add']);
@@ -44,7 +43,9 @@
   $result = queryMysql("SELECT user FROM members ORDER BY user");
   $num    = $result->num_rows;
 
-  echo "<h3>Other Members</h3><ul>";
+  echo "<h3>Other Members</h3><div class='mainList'><ul>";
+       
+  echo "<div id =id=\"otherMember\" >";
 
   for ($j = 0 ; $j < $num ; ++$j)
   {
@@ -69,9 +70,15 @@
     
     if (!$t1) echo " [<a href='members.php?add="   .$row['user'] . "'>$follow</a>]";
     else      echo " [<a href='members.php?remove=".$row['user'] . "'>drop</a>]";
+
+
   }
+  echo "</ul></div>" .
+      "<div id =\"memberMap\">" .
+      "deioeuhccqhiop".
+      "</div></div>";
 ?>
 
-    </ul></div>
+    </div>
   </body>
 </html>

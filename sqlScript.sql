@@ -40,3 +40,14 @@ INSERT INTO `arpalikh`.`members` (`user`, `pass`) VALUES ('precious', 'password'
 ('precute',53.44895278, -2.28943837),
 ('tester',53.45877473, -2.27989024),
 ('tester',53.43667437, -2.2149833);
+
+
+/** to select mutual friends**/
+select friends.user, friends.friend, track_location.Longitude, track_location.Latitude, track_location.timeinserted
+from track_location
+join  friends 
+where friends.user ="precute"
+group by user;
+
+/** to select my followers **/
+
