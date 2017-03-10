@@ -1,20 +1,14 @@
 <!doctype html>
 <html>
 <head>
-<title>
-</title>
-</head>
-
-<body>
-
 <!-- jQuery client-side validation -->
 <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/jquery.validation/1.15.0/jquery.validate.min.js"></script>
 <script src="https://cdn.jsdelivr.net/jquery.validation/1.15.0/additional-methods.min.js"></script>
 
-<from id="myform">
-<br/>
-</form>
+</head>
+
+<body>
 
 <script>
 jQuery.validator.setDefaults({
@@ -23,7 +17,7 @@ jQuery.validator.setDefaults({
 });
 $( "#myform" ).validate({
   rules: {
-    email: {
+    field: {
       required: true,
       email: true
     }
@@ -114,7 +108,7 @@ _END;
       value='$pass'><br>
       
     <span class='fieldname'>Email</span>
-    <input type='text' maxlength='60' name='email'
+    <input type='text' maxlength='60' name='field' id='field'
       value='$email'><br>
       
 _END;
