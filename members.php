@@ -3,7 +3,7 @@
 
   if (!$loggedin) die();
 
-  echo "<div class='main'>";
+  echo "<div class='container'>";
 
   if (isset($_GET['view']))
   {
@@ -12,19 +12,25 @@
     if ($view == $user) $name = "Your";
     else                $name = "$view's";
     
-    echo "<h3>$name Profile</h3>";
+    echo "<h3>$name Profile</h3><form class='form-horizontal'><div class='row'>";
+    ?>
+    <div id ="indexProfile"><div class="col-sm-4">
+    <?php
     showProfile($view);
 
  $lat = $_SESSION['lat'];
  $long = $_SESSION['long'];
     $date = date('Y-m-d h:i:s');
     queryMysql("INSERT INTO track_location VALUES ('$view', '$long', '$lat', '$date' )");
-
-    echo "<a class='button' href='messages.php?view=$view'>" .
-         "View $name messages</a><br><br>" .
-          "<div id=\"location\"></div></br>" .
-          "<div id = \"showMap\" style= \"width:800px;height:500px\"></div>";
-           die("</div></body></html>");
+    echo "<div class='form-group'>".
+      "<div class='col-sm-10'>" .
+        "<a class='btn btn-info' href='messages.php?view=$view'>" .
+         "<span class='glyphicon glyphicon-envelope' style='margin-right: 0.5em'></span>View $name messages</a><br><br>" .
+      "</div>".
+    "</div></div></div><div class='col-sm-8'>".
+    "<div id=\"location\">Current Location</div></br>" .
+    "<div id = \"showMap\" style= \"width:100%;height:500px\"></div></div>";
+    die("</div></div></form></body></html>");
   }
   if (isset($_GET['add']))
   {
@@ -79,6 +85,6 @@
       "</div></div>";
 ?>
 
-    </div>
+    </div></div>
   </body>
 </html>

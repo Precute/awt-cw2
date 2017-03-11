@@ -102,7 +102,7 @@ _END;
     <div class="form-group">
       <label class="control-label col-sm-2" >Password:</label>
       <div class="col-sm-10">
-        <input  type='text' maxlength='16' name='pass' value='$pass'
+        <input  type='password' maxlength='16' name='pass' value='$pass'
       onBlur='checkUser(this)' class="form-control"  placeholder="Enter Password">
       </div>
     </div>
@@ -110,7 +110,7 @@ _END;
     <div class="form-group">
       <label class="control-label col-sm-2" >Confirm Password:</label>
       <div class="col-sm-10">
-        <input  type='text' maxlength='16' name='confirmpass' value='$confirmpass'
+        <input  type='password' maxlength='16' name='confirmpass' value='$confirmpass'
       onBlur='checkUser(this)' class="form-control"  placeholder="Confirm Password">
       </div>
     </div>

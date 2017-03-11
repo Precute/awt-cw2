@@ -24,7 +24,7 @@
        "<body id ='mybody'><div id='divlogo'><canvas id='logo' width='624' "    .
        "height='96'>$appname</canvas></div>"             .
        "<div class='appname'></div>"            .
-       "<script src=\"//ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js\"></script>" .
+       "<script src=\"//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js\"></script>" .
        "<script src='js/javascript.js'></script>" .
        " <script async defer\n" .
        "      src=\"https://maps.googleapis.com/maps/api/js?key=AIzaSyApczdYj25JGm98yRR7a2YRBIOZH5vHDxI\">\n".
