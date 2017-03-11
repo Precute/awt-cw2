@@ -1,6 +1,6 @@
 <?php // Example 26-7: login.php
   require_once 'header.php';
-  echo "<div class='container'><h2>Please enter your details to log in</h2>";
+  echo "<div class='container'>";
   $error = $user = $pass = "";
 
   if (isset($_POST['user']))
@@ -24,7 +24,7 @@
       {
         $_SESSION['user'] = $user;
         $_SESSION['pass'] = $pass;
-        die("You are now logged in. Please <a href='members.php?view=$user'>" .
+        die("<h2>Welcome </h2> You are now logged in. Please <a href='members.php?view=$user'>" .
             "click here</a> to continue.<br><br>");
       }
     }
@@ -32,6 +32,7 @@
 
   echo <<<_END
     <form method='post' class="form-horizontal" action='login.php'>$error
+    <h2>Please enter your details to log in</h2>
     <div class="form-group">
       <label class="control-label col-sm-2" >Username:</label>
       <div class="col-sm-10">
@@ -45,7 +46,7 @@
     <div class="form-group">
       <label class="control-label col-sm-2" >Password:</label>
       <div class="col-sm-10">
-        <input  type='text' maxlength='16' name='pass' value='$pass'
+        <input  type='password' maxlength='16' name='pass' value='$pass'
       onBlur='checkUser(this)' class="form-control"  placeholder="Enter Password">
       </div>
     </div>
