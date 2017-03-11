@@ -49,9 +49,9 @@
   $result = queryMysql("SELECT user FROM members ORDER BY user");
   $num    = $result->num_rows;
 
-  echo "<h3>Other Members</h3><div class='mainList'><ul>";
+  echo "<div class='row'><h3>Other Members</h3><div class='mainList'><ul>";
        
-  echo "<div id =id=\"otherMember\" >";
+  echo "<div id =id=\"otherMember\" ><div class='col-sm-10'>";
 
   for ($j = 0 ; $j < $num ; ++$j)
   {
@@ -80,11 +80,10 @@
 
   }
   echo "</ul></div>" .
-      "<div id =\"memberMap\">" .
-      "deioeuhccqhiop".
-      "</div></div>";
+      "<div class='col-sm-8'><div id =\"memberMap\" style= \"width:100%;height:500px\">" .
+      "</div></div></div>";
 ?>
 
-    </div></div>
+    </div></div></div>
   </body>
 </html>
