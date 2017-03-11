@@ -50,7 +50,7 @@
     echo "      <li class=\"active\"><a href='members.php?view=$user'>Home</a></li>\n";
     echo "      <li><a href='members.php'>Members</a></li>\n";
     echo "      <li><a href='friends.php'>Friends</a></li>\n";
-    echo "      <li><a href='#'>Location History</a></li>\n";
+    echo "      <li><a href='locationhistory.php'>Location History</a></li>\n";
     echo "      <li><a href='messages.php'>Messages</a></li>\n";
     echo "      <li><a href='profile.php'>Profile</a></li>\n";
     echo "    </ul>\n";

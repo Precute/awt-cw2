@@ -92,7 +92,7 @@ _END;
 
   if (!$num) echo "<br><span class='info'>No messages yet</span><br><br>";
 
-  echo "<div class='form-group'>".
+  echo "<br><br><div class='form-group'>".
       "<div class='col-sm-10'>" .
         "<a class='btn btn-info' href='messages.php?view=$view'>" .
          "<span class='glyphicon glyphicon-retweet' style='margin-right: 0.5em'></span>Refresh Messages</a><br><br>" .

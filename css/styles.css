@@ -53,11 +53,6 @@ li a:hover, .button:hover {
   margin-left:2px;
   width: 450px;
 }
-#memberMap{
-float: right;
-width: 450px;
-border  :1px solid green;
-}
 
 .info {
   background :lightgreen;
