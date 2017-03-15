@@ -41,6 +41,7 @@ li a:hover, .button:hover {
   padding    :4px;
 }
 
+
 .fieldname {
   float:left;
   width:120px;
@@ -110,6 +111,10 @@ li a:hover, .button:hover {
   border: 1px solid #999;
   text-align: center;
   line-height: 30px;
+}
+
+#error{
+color:red;
 }
 
 #indexImg{

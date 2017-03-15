@@ -107,7 +107,7 @@ _END;
     </div>
 
     <div class="form-group">
-      <label class="control-label col-sm-2" >Confirm jjjPassword:</label>
+      <label class="control-label col-sm-2" >Confirm Password:</label>
       <div class="col-sm-10">
         <input  type='password' maxlength='16' name='confirmpass' value='$confirmpass' class="form-control"   placeholder="Confirm Password">
       </div>
@@ -173,9 +173,6 @@ _END;
         <button type="submit" value='Sign up'  class="btn btn-default"><span class="glyphicon glyphicon-user" style="margin-right: 0.5em"></span>Create Account</button>
       </div>
     </div>
-    
-    <input type="submit" value="Submit" />
-
     </form>
 
   </div><br>
