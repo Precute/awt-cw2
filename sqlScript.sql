@@ -41,6 +41,8 @@ INSERT INTO `tanveeah`.`members` (`user`, `pass`) VALUES ('precious', 'password'
 ('tester',53.45877473, -2.27989024),
 ('tester',53.43667437, -2.2149833);
 
+alter table track_location
+add shareLocation char;
 
 /** to select mutual friends**/
 select friends.user, friends.friend, track_location.Longitude, track_location.Latitude, track_location.timeinserted
@@ -50,4 +52,10 @@ where friends.user ="precute"
 group by user;
 
 /** to select my followers **/
+select friends.user, friends.friend, track_location.Longitude, track_location.Latitude, track_location.timeinserted,track_location.shareLocation
+from track_location
+join  friends 
+where friends.friend ="precious" and track_location.shareLocation = 0
+group by user;
+
 

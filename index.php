@@ -4,6 +4,7 @@
 
 
 ?>
+<div class="col-sm-12" >
 <div class="jumbotron">
 <?php
 
@@ -16,13 +17,15 @@
 ?>
   <p><a class="btn btn-primary btn-lg" href="login.php" role="button">Connect with the People around You!!</a></p>
 
-</div>
-
+</div></div>
+    <div class="col-sm-12" >
      <div id="location"></div></br></br>
-     <div id="floating-panel">
+      <div  id = "floating-panel" class= "panel panel-info">
+     <div  class= "panel-heading">
       <input id="address" type="textbox" value="Salford">
       <input id="submit" type="button" value="Search">
     </div>
+  </div>
      <div id='map_canvas' style= "width:100%;height:500px"></div>
 
     <div id='input'>
@@ -30,7 +33,7 @@
       <input type="hidden" id="encodedString" name="encodedString" value="<?php echo $encodedString; ?>" />
     </div></br>
 
-    </span><br><br>
+    </div></div><br><br>
 
    
   </body>
