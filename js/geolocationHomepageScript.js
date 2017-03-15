@@ -15,7 +15,7 @@ function getCurrentPosition() {
             enableHighAccuracy: true,
             timeout: 5 * 60 * 10000,
             maximumAge: 60 * 000
-                //positionOptions.enableHighAccuracy: false			
+                //positionOptions.enableHighAccuracy: false         
         });
         navigator.geolocation.getCurrentPosition(successPosition, failPosition, {
                 enableHighAccuracy : false,
