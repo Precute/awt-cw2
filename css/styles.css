@@ -5,6 +5,8 @@
 }
 
 #mybody {
+  height: 100%;
+  width: 100%;
   background: #f6f3f1;
   border: 1px solid;
 
@@ -105,13 +107,9 @@ li a:hover, .button:hover {
   position: absolute;
   left: 55%;
   z-index: 5;
-  background-color: #fff;
-  padding: 5px;
   border: 1px solid #999;
   text-align: center;
-  font-family: 'Roboto','sans-serif';
   line-height: 30px;
-  padding-left: 10px;
 }
 
 #indexImg{

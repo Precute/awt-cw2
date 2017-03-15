@@ -21,20 +21,21 @@
       " <link href='css/bootstrap.min.css' rel='stylesheet'>".
        "<link href='css/bootstrap-theme.min.css' rel='stylesheet'>" .
        "</head>".
-       "<body id ='mybody'><div id='divlogo'><canvas id='logo' width='624' "    .
+       "<body class='row' id ='mybody'><div id='divlogo'><canvas class='img-responsive' id='logo' width='624' "    .
        "height='96'>$appname</canvas></div>"             .
        "<div class='appname'></div>"            .
-       "<script src=\"//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js\"></script>" .
-       "<script src='js/javascript.js'></script>" .
        " <script async defer\n" .
        "      src=\"https://maps.googleapis.com/maps/api/js?key=AIzaSyApczdYj25JGm98yRR7a2YRBIOZH5vHDxI\">\n".
        "    </script>\n" .
+       "<script src=\"//ajax.googleapis.com/ajax/libs/jquery/1.10.3/jquery.min.js\"></script>" .
+       "<script type='text/javascript' src='js/jquery.gomap.js'></script> ".
+       "<script src='js/javascript.js'></script>" .
+       "<script src='js/geoPosition.js' type='text/javascript' charset='utf-8'></script> ".
+       "<script src='js/geoPositionSimulator.js' type='text/javascript' charset='utf-8'></script>".
        "  <script src='js/bootstrap.min.js'></script>" .
        "  <script src='js/geolocationHomepageScript.js'>\n" .
        "  </script>\n"; 
-  echo "  <script type=\"text/javascript\">\n"; 
-  echo "    window.onload = getCurrentPosition;\n"; 
-  echo "  </script>\n";
+
 
 
 
@@ -67,7 +68,7 @@
     echo "<nav class=\"navbar navbar-inverse\">\n";
     echo "  <div class=\"container-fluid\">\n";
     echo "    <div class=\"navbar-header\">\n";
-    echo "      <a class=\"navbar-brand\" href=\"#\">$appname$userstr</a>\n";
+    echo "      <a class=\"navbar-brand\" href=\"index.php\">$appname$userstr</a>\n";
     echo "    </div>\n";
     echo "    <ul class=\"nav navbar-nav\">\n";
     echo "      <li class=\"active\"><a href=\"index.php\">Home</a></li>\n";
