@@ -27,7 +27,7 @@
        " <script async defer\n" .
        "      src=\"https://maps.googleapis.com/maps/api/js?key=AIzaSyApczdYj25JGm98yRR7a2YRBIOZH5vHDxI\">\n".
        "    </script>\n" .
-       "<script src=\"//ajax.googleapis.com/ajax/libs/jquery/1.10.3/jquery.min.js\"></script>" .
+       "<script src=\"//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js\"></script>" .
        "<script type='text/javascript' src='js/jquery.gomap.js'></script> ".
        "<script src='js/javascript.js'></script>" .
        "<script src='js/geoPosition.js' type='text/javascript' charset='utf-8'></script> ".

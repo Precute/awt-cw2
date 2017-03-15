@@ -15,7 +15,7 @@ var errorCode;
             enableHighAccuracy: true,
             timeout: 5 * 60 * 10000,
             maximumAge: 60 * 000
-                //positionOptions.enableHighAccuracy: false         
+            positionOptions.enableHighAccuracy: false         
         });
     
         }
@@ -182,7 +182,7 @@ function failPosition(error) {
                     },
                     //position: lat,
                     //Content is what will show up in the info window
-                    content: addressDetails[0]
+                    content: addressDetails[4]
                 });
                 //Pushing the markers into an array so that it's easier to manage them
                 markersArray.push(marker);

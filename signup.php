@@ -81,7 +81,7 @@ _END;
       else
       {
         queryMysql("INSERT INTO members VALUES('$user', '$pass', '$email', '$firstname', '$surname', '$gender')");
-        die("<h4>Account created</h4>Please Log in.<br><br>");
+        die("<h4>Account created</h4>Please<a href=\"login.php\"> Log in</a>.<br><br>");
       }
     }
   }
