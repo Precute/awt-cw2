@@ -1,14 +1,18 @@
 /* Example 26-13: styles.css */
-
 * {
   font-family:verdana,sans-serif;
   font-size  :14pt;
 }
 
 #mybody {
+  height: 100%;
+  width: 100%;
   background: #f6f3f1;
   border: 1px solid;
 
+}
+#myProfile{
+  color: #2d94b5;
 }
 
 html {
@@ -50,11 +54,6 @@ li a:hover, .button:hover {
 .mainList {
   margin-left:2px;
   width: 450px;
-}
-#memberMap{
-float: right;
-width: 450px;
-border  :1px solid green;
 }
 
 .info {
@@ -108,13 +107,9 @@ border  :1px solid green;
   position: absolute;
   left: 55%;
   z-index: 5;
-  background-color: #fff;
-  padding: 5px;
   border: 1px solid #999;
   text-align: center;
-  font-family: 'Roboto','sans-serif';
   line-height: 30px;
-  padding-left: 10px;
 }
 
 #indexImg{
@@ -125,3 +120,7 @@ border  :1px solid green;
   width: 25%;
 
 }
+#indexProfile{
+  background:#aad1e3;
+}
+

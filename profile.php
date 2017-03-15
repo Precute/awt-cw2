@@ -3,7 +3,7 @@
 
   if (!$loggedin) die();
 
-  echo "<div class='main'><h3>Your Profile</h3>";
+  echo "<div class='container'><h3>Your Profile</h3>";
 
   $result = queryMysql("SELECT * FROM profiles WHERE user='$user'");
     
@@ -79,14 +79,27 @@
   showProfile($user);
 
   echo <<<_END
-    <form method='post' action='profile.php' enctype='multipart/form-data'>
-    <h3>Enter or edit your details and/or upload an image</h3>
-    <textarea name='text' cols='50' rows='3'>$text</textarea><br>
+    <form class='form-horizontal' method='post' action='profile.php' enctype='multipart/form-data'>
+    <h3><b>Enter or edit your details and/or upload an image</b></h3>
+    
+    <div class="form-group">
+      <div class="col-sm-10">
+        <textarea name='text' cols='50' rows='3'>$text</textarea>
+      </div>
+    </div>
+
 _END;
 ?>
 
-    Image: <input type='file' name='image' size='14'>
-    <input type='submit' value='Save Profile'>
+  <div class="form-group">
+      <label class="control-label col-sm-2" >Image:</label>
+      <div class="col-sm-10">
+      <input type='file' name='image' size='14'class="btn btn-default" >
+      </div>
+    </div>
+
+   
+    <button type='submit' value='Save Profile' class="btn btn-default"><span class="glyphicon glyphicon-save" style="margin-right: 0.5em"></span>Save</button><br>
     </form></div><br>
   </body>
 </html>
