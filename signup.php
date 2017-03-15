@@ -7,6 +7,7 @@
 <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/jquery.validation/1.15.0/jquery.validate.min.js"></script>
 <script src="https://cdn.jsdelivr.net/jquery.validation/1.15.0/additional-methods.min.js"></script>
+
 </head>
 
 <body>
@@ -57,7 +58,7 @@
    <div class="container"> <h2>Please enter your details to sign up</h2>
 _END;
 
-  $error = $user = $pass = $email = $firstname = $surname = "";
+ $error = $user = $pass = $email = $firstname = $surname = "";
   if (isset($_SESSION['user'])) destroySession();
 
   if (isset($_POST['user']))
@@ -97,29 +98,25 @@ _END;
       </div>
     </div>
 
-   
     
     <div class="form-group">
       <label class="control-label col-sm-2" >Password:</label>
       <div class="col-sm-10">
-        <input  type='password' maxlength='16' name='pass' value='$pass'
-      onBlur='checkUser(this)' class="form-control"  placeholder="Enter Password">
+        <input  type='password' maxlength='16' name='pass' value='$pass' class="form-control"  placeholder="Enter Password">
       </div>
     </div>
 
     <div class="form-group">
-      <label class="control-label col-sm-2" >Confirm Password:</label>
+      <label class="control-label col-sm-2" >Confirm jjjPassword:</label>
       <div class="col-sm-10">
-        <input  type='password' maxlength='16' name='confirmpass' value='$confirmpass'
-      onBlur='checkUser(this)' class="form-control"  placeholder="Confirm Password">
+        <input  type='password' maxlength='16' name='confirmpass' value='$confirmpass' class="form-control"   placeholder="Confirm Password">
       </div>
     </div>
 
     <div class="form-group">
       <label class="control-label col-sm-2" >Email:</label>
       <div class="col-sm-10">
-        <input  type='text' maxlength='60' name='email' value='$email'
-      onBlur='checkUser(this)' class="form-control"  placeholder="Enter Email">
+        <input  type='text' maxlength='100' name='email' value='$email'  class="form-control"  placeholder="Enter Email">
       </div>
     </div>
 
@@ -157,7 +154,7 @@ _END;
     $male_status = 'unchecked';
     $female_status = 'unchecked';
 
-    if (isset($_POST['Submit1'])) {
+    if (isset($_POST['gender'])) {
          $selected_radio = $_POST['gender'];
 
          if ($selected_radio == 'male') {
@@ -173,38 +170,16 @@ _END;
 
 <div class="form-group">        
       <div class="col-sm-offset-2 col-sm-10">
-        <button type="submit" value='Sign up' class="btn btn-default"><span class="glyphicon glyphicon-user" style="margin-right: 0.5em"></span>Create Account</button>
+        <button type="submit" value='Sign up'  class="btn btn-default"><span class="glyphicon glyphicon-user" style="margin-right: 0.5em"></span>Create Account</button>
       </div>
     </div>
+    
+    <input type="submit" value="Submit" />
 
     </form>
 
   </div><br>
+  
     
-    <script>
-$(document).ready(function(){ 
-
- $("#myform").validate({
-
-  rules: {
-    email: {
-      required: true,
-      email: true
-    } 
-  },
-
-  messages: {
-
-    email: "Please enter a valid email address"
-            },
-            submitHandler: submitForm
-        });
- });
-
-function submitForm (){
-  form.submit();
-}
-</script>
-
   </body>
 </html>
