@@ -165,32 +165,24 @@ function failPosition(error) {
  
             var x;
             for (x = 0; x < stringArray.length; x = x + 1)
-            {
+            {   var locationAddress;
+                var locationAddress2
                 var addressDetails = [];
                 var marker;
                 //Separate each field
                 addressDetails = stringArray[x].split("&&&");
                 //Load the lat, long data
                 var lat = new google.maps.LatLng(addressDetails[1], addressDetails[2]);
-                console.log("*******" +lat);
+                console.log('*****'  + lat);
                   geocoder1.geocode({
                         'latLng': lat
-                    }, 
-                    function(results, status) {
+                    },function(results, status) {
                         if (status == google.maps.GeocoderStatus.OK) {
                             if (results) {
                                 locationAddress = results[0].formatted_address;
                                 locationAddress2 = results[1].formatted_address;
-                                 console.log("***********" +locationAddress);
                                 markerTitle = results[0].address_components[1].long_name;
-
-                    google.maps.event.addListener( marker, 'click', function () {
-                    closeInfos();
-                    var info = new google.maps.InfoWindow({content: locationAddress1});
-                    //On click the map will load the info window
-                    info.open(map,this);
-                    infos[0]=info;
-                });
+                                console.log('*****'  + markerTitle);
                             }
 
                         } else {
@@ -212,16 +204,23 @@ function failPosition(error) {
                     },
                     position: lat,
                     //Content is what will show up in the info window
-                    //content: markerTitle
+                    content: '*****'  + lat
                 });
                
 
         document.getElementById('submit').addEventListener('click', function() {
           geocodeAddress(geocoder, map);
         });
-                                //Pushing the markers into an array so that it's easier to manage them
+                 //Pushing the markers into an array so that it's easier to manage them
                 markersArray.push(marker);
-                
+
+                google.maps.event.addListener( marker, 'click', function () {
+                    closeInfos();
+                    var info = new google.maps.InfoWindow({content: this.content});
+                    //On click the map will load the info window
+                    info.open(map,this);
+                    infos[0]=info;
+                });
                //Extends the boundaries of the map to include this new location
                bounds.extend(lat);
             }

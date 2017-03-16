@@ -45,7 +45,7 @@
     "</div>".
     "<div class='radio-inline'>".
       "<label><input type='radio' name='shareLocation' value= '1' checked='checked' >Private  </label>".
-    "</div><input type='submit' name='submit' value='Share'/></div>".
+    "</div><input type='submit' name='submit' class='btn btn-default' value='Share'/></div>".
     "<div id = \"showMap\" style= \"width:100%;height:500px\"></div></div>";
     die("</div></div></form></body></html>");
   }
