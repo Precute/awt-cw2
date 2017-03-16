@@ -6,23 +6,22 @@ var latLong, startLat, startLong;
 var uMaps;
 var geocoder;
 var start = 1;
-var errorCode;
 //var map;
-    // onl y i f we can i n i t i a l i s e . . .
-    if (geoPosition.init()) {
-// u se the g e o P o si ti o n J a v a S c ri p t l i b r a r y :
-    geoPosition.getCurrentPosition(successCallback, failPosition, {
+
+
+function getCurrentPosition() {
+    if (navigator.geolocation) {
+        watchId = navigator.geolocation.getCurrentPosition(successCallback, failPosition, {
             enableHighAccuracy: true,
             timeout: 5 * 60 * 10000,
             maximumAge: 60 * 000
-            positionOptions.enableHighAccuracy: false         
+                //positionOptions.enableHighAccuracy: false         
         });
-    
-        }
-    else {
-        document.getElementById("showMap").innerHTML = "Your browser does not support HTMLS Golocation API";
+    } else {
+        document.getElementById("location").innerHTML = "Your browser does not support HTMLS Golocation API";
     }
 
+}
 
 function clearPosition() {
     navigator.geolocation.clearWatch(watchId);
@@ -101,17 +100,18 @@ function successPosition(memberPosition){
 }
 
 function failPosition(error) {
+    var errorCode;
     if (error.code == 1) {
         errorCode = "Your Location Permission have Denied";
     } else if (error.code == 2) {
-        errorCode = "Geolocation Permission Denied: Location information is unavailable";
+        errorCode = "Network is down, or positioning satellites uncontactable";
     } else if (error.code == 3) {
         errorCode = "finding your position takes too long";
     } else if (error.code == 3) {
         errorCode = "Something else has gone wrong";
     }
 
-    alert("Error code: " + errorCode );
+    alert("Error code: " + errorCode + " Error message: " + error.message);
 
 }
 
@@ -132,20 +132,26 @@ function failPosition(error) {
       }
 
  //This javascript will load when the page loads.
-    $(document).ready(function(){
+    $(function(){
  
+            
+        
             var markersArray = [];
             var infos = [];
  
-            //geocoder1 = new google.maps.Geocoder();
-            $("#map_canvas"). goMap( {
+            geocoder = new google.maps.Geocoder();
+            var myOptions = {
                   zoom: 18,
-                  mapTypeId: 'ROADMAP',
+                  mapTypeId: google.maps.MapTypeId.ROADMAP,
                   fullscreenControl: true
+<<<<<<< Updated upstream
                 });
+=======
+                }
+>>>>>>> Stashed changes
             //Load the Map into the map_canvas div
-            //var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
-            //map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+           var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+            map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
  
             //Initialize a variable that the auto-size the map to whatever you are plotting
             var bounds = new google.maps.LatLngBounds();
@@ -154,9 +160,9 @@ function failPosition(error) {
             //Initialize the array that will hold the contents of the split string
             var stringArray = [];
             //Get the value of the encoded string from the hidden input
-            //encodedString = document.getElementById("encodedString").value;
+            encodedString = document.getElementById("encodedString").value;
             //Split the encoded string into an array the separates each location
-            //stringArray = encodedString.split("****");
+            stringArray = encodedString.split("****");
  
             var x;
             for (x = 0; x < stringArray.length; x = x + 1)
@@ -164,14 +170,14 @@ function failPosition(error) {
                 var addressDetails = [];
                 var marker;
                 //Separate each field
-                //addressDetails = stringArray[x].split("&&&");
+                addressDetails = stringArray[x].split("&&&");
                 //Load the lat, long data
                 var lat = new google.maps.LatLng(addressDetails[1], addressDetails[2]);
+               
                 //Create a new marker and info window
-                $.goMap.createMarker({
-                    latitude: addressDetails[1],
-                    longitude: addressDetails[2],
-                     icon: {
+                marker = new google.maps.Marker({
+                    map: map,
+                    icon: {
                         path: "M27.648 -41.399q0 -3.816 -2.7 -6.516t-6.516 -2.7 -6.516 2.7 -2.7 6.516 2.7 6.516 6.516 2.7 6.516 -2.7 2.7 -6.516zm9.216 0q0 3.924 -1.188 6.444l-13.104 27.864q-0.576 1.188 -1.71 1.872t-2.43 0.684 -2.43 -0.684 -1.674 -1.872l-13.14 -27.864q-1.188 -2.52 -1.188 -6.444 0 -7.632 5.4 -13.032t13.032 -5.4 13.032 5.4 5.4 13.032z",
                         scale: 0.6,
                         strokeWeight: 0.2,
@@ -180,11 +186,16 @@ function failPosition(error) {
                         fillColor: 'green',
                         fillOpacity: 0.85,
                     },
-                    //position: lat,
+                    position: lat,
                     //Content is what will show up in the info window
-                    content: addressDetails[4]
+                    content: addressDetails[0]
                 });
-                //Pushing the markers into an array so that it's easier to manage them
+               
+
+        document.getElementById('submit').addEventListener('click', function() {
+          geocodeAddress(myGeocoder, map);
+        });
+                                //Pushing the markers into an array so that it's easier to manage them
                 markersArray.push(marker);
                 google.maps.event.addListener( marker, 'click', function () {
                     closeInfos();
@@ -196,9 +207,6 @@ function failPosition(error) {
                //Extends the boundaries of the map to include this new location
                bounds.extend(lat);
             }
-             document.getElementById('submit').addEventListener('click', function() {
-              geocodeAddress(geocoder, map);
-             });
             //Takes all the lat, longs in the bounds variable and autosizes the map
             map.fitBounds(bounds);
  
