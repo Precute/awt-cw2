@@ -54,6 +54,7 @@ _END;
     $email = sanitizeString($_POST['email']);
     $firstname = sanitizeString($_POST['firstname']);
     $surname = sanitizeString($_POST['surname']);
+    $confirmpass = sanitizeString($_POST['confirmpass']);
 
 
     if ($user == "" || $pass == "" || $email == "")
