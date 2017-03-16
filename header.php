@@ -27,7 +27,8 @@
        " <script async defer\n" .
        "      src=\"https://maps.googleapis.com/maps/api/js?key=AIzaSyApczdYj25JGm98yRR7a2YRBIOZH5vHDxI\">\n".
        "    </script>\n" .
-       "<script src=\"//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js\"></script>" .
+
+       "<script src=\"//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js\"></script>" .
        "<script type='text/javascript' src='js/jquery.gomap.js'></script> ".
        "<script src='js/javascript.js'></script>" .
        "<script src='js/geoPosition.js' type='text/javascript' charset='utf-8'></script> ".
@@ -35,6 +36,9 @@
        "  <script src='js/bootstrap.min.js'></script>" .
        "  <script src='js/geolocationHomepageScript.js'>\n" .
        "  </script>\n"; 
+       echo "  <script type=\"text/javascript\">\n"; 
+echo "    window.onload = getCurrentPosition;\n"; 
+echo "  </script>\n";
 
 
 
