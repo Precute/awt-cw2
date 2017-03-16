@@ -11,30 +11,12 @@
         O('info').innerHTML = ''
         return
       }
-      function val(){
-if(myform.pass.value == "")
-{
-	alert("Enter the Password");
-	myform.pass.focus(); 
-	return false;
-}
-if((myform.pass.value).length < 8)
-{
-	alert("Password should be minimum 8 characters.");
-	frm.pass.focus();
-	return false;
-}
-
-return true;
-}
-
 
       params  = "user=" + user.value
       request = new ajaxRequest()
       request.open("POST", "checkuser.php", true)
       request.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
-      request.setRequestHeader("Content-length", params.length)
-      request.setRequestHeader("Connection", "close")
+    
 
       request.onreadystatechange = function()
       {
@@ -84,14 +66,8 @@ _END;
         $error = "That username already exists<br><br>";
       else
       {
-<<<<<<< HEAD
         queryMysql("INSERT INTO members VALUES('$user', '$pass', '$email', '$firstname', '$surname', '$gender')");
-        die("<h2>Account created</h>Please<a href=\"login.php\"> Log in</a>.<br><br>");
-=======
-      $passmd5 = md5($pass);
-        queryMysql("INSERT INTO members VALUES('$user', '$passmd5', '$email', '$firstname', '$surname', '$gender')");
         die("<h2>Account created</h2>Please<a href=\"login.php\"> Log in</a>.<br><br>");
->>>>>>> origin/master
       }
     }
   }
@@ -209,6 +185,11 @@ type="text/javascript"></script>
       required: true,
       email: true
     },
+      pass: {
+      required:true,
+      passcheck: true,
+      minlength: 6,
+                },
     confirmpass: {
                     equalTo : "#pass"
                 }
@@ -220,14 +201,28 @@ type="text/javascript"></script>
           {
             required: "Please enter your email address. This is required to contact you later."
           },
+     pass: 
+          {
+            required: "Please set a password.",
+            passcheck: "Please enter at least 6 characters including a uppercase and a number",
+            minlength: "Password too short"
+          },
     confirmpass: 
           {
             equalTo: "Your password confirmation does not match. Please check and try again."
           }
             }
         });
+
+   $.validator.addMethod("passcheck", function(value) {
+   return /^[A-Za-z0-9\d=!\-@._*]*$/.test(value) // consists of only these
+       && /[a-z]/.test(value) // has a lowercase letter
+       && /\d/.test(value) // has a digit
+});
  
-});</script>
+});
+
+    </script>
 
 
   </body>
