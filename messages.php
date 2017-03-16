@@ -36,7 +36,7 @@
       Type here to leave a message:<br>
       <div class="form-group">
       <div class="col-sm-10">
-        <textarea name='text' cols='50' rows='3'>$text</textarea>
+        <textarea name='text' cols='50' rows='3'></textarea>
       </div>
     </div>
       
