@@ -50,8 +50,7 @@
       <div class="col-sm-offset-2 col-sm-10">
         <button type="submit" value='Post Message' class="btn btn-default"><span class="glyphicon glyphicon-level-up" style="margin-right: 0.5em"></span>Post Message</button>
       </div>
-    </div>
-    </form>
+    </div></form>
 _END;
 
     if (isset($_GET['erase']))

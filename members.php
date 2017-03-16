@@ -27,7 +27,7 @@
     
     queryMysql("INSERT INTO track_location VALUES ('$view', '$long', '$lat', '$date' , '$shareLocation')");
 
-}else{
+}if(isset($_SESSION['lat']) && isset($_SESSION['lat'])){
   $shareLocation = '1';
   queryMysql("INSERT INTO track_location VALUES ('$view', '$long', '$lat', '$date' , '$shareLocation')");
 }
