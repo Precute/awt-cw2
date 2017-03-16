@@ -9,7 +9,7 @@
     $pass = sanitizeString($_POST['pass']);
     
     if ($user == "" || $pass == "")
-        $error = "Not all fields were entered<br>";
+        $error = "<span class='error'>Not all fields were entered</span><br>";
     else
     {
       $result = queryMySQL("SELECT user,pass FROM members

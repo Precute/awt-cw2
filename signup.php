@@ -1,5 +1,6 @@
 <?php // Example 26-5: signup.php
   require_once 'header.php';
+  
 ?>
 <?php
   echo <<<_END

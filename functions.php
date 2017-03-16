@@ -62,4 +62,5 @@
       echo stripslashes("<div id= 'myProfile'><br><br><span class='glyphicon glyphicon-info-sign' style='margin-right: 0.40em'><b><p>".  $row['text']) . "</p></b><br style='clear:left;'><br></div>";
     }
   }
+  
 ?>
