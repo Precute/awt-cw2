@@ -112,14 +112,18 @@ _END;
     <div class="form-group">
       <label class="control-label col-sm-2" >Password:</label>
       <div class="col-sm-10">
+
         <input  type='password' maxlength='16' name='pass' id='pass' value='$pass' class="form-control"  placeholder="Enter Password">
+
       </div>
     </div>
 
     <div class="form-group">
       <label class="control-label col-sm-2" >Confirm Password:</label>
       <div class="col-sm-10">
+
         <input  type='password' maxlength='16' name='confirmpass' id='confirmpass' value='$confirmpass' class="form-control"   placeholder="Confirm Password">
+
       </div>
     </div>
 
@@ -185,6 +189,7 @@ _END;
     </form>
 
   </div><br>
+
      <!--include jQuery -->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"
 type="text/javascript"></script>
@@ -223,6 +228,7 @@ type="text/javascript"></script>
         });
  
 });</script>
+
 
   </body>
 </html>
