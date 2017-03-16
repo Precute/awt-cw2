@@ -6,12 +6,12 @@ var latLong, startLat, startLong;
 var uMaps;
 var geocoder;
 var start = 1;
-//var map;
+var markerTitle;
 
 
 function getCurrentPosition() {
-    if (navigator.geolocation) {
-        watchId = navigator.geolocation.getCurrentPosition(successCallback, failPosition, {
+    if (geoPosition.init()) {
+        geoPosition.getCurrentPosition(successCallback, failPosition, {
             enableHighAccuracy: true,
             timeout: 5 * 60 * 10000,
             maximumAge: 60 * 000
@@ -54,7 +54,8 @@ function successCallback(watch) {
     latLong = new google.maps.LatLng(lat, long);
     geocoder.geocode({
         'latLng': latLong
-    }, function(results, status) {
+    }, 
+    function(results, status) {
         if (status == google.maps.GeocoderStatus.OK) {
             if (results) {
                 locationAddress = results[0].formatted_address;
@@ -139,16 +140,12 @@ function failPosition(error) {
             var markersArray = [];
             var infos = [];
  
-            geocoder = new google.maps.Geocoder();
+            var geocoder1 = new google.maps.Geocoder();
             var myOptions = {
                   zoom: 18,
                   mapTypeId: google.maps.MapTypeId.ROADMAP,
                   fullscreenControl: true
-<<<<<<< Updated upstream
-                });
-=======
-                }
->>>>>>> Stashed changes
+                };
             //Load the Map into the map_canvas div
            var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
             map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
@@ -164,6 +161,8 @@ function failPosition(error) {
             //Split the encoded string into an array the separates each location
             stringArray = encodedString.split("****");
  
+
+ 
             var x;
             for (x = 0; x < stringArray.length; x = x + 1)
             {
@@ -173,7 +172,32 @@ function failPosition(error) {
                 addressDetails = stringArray[x].split("&&&");
                 //Load the lat, long data
                 var lat = new google.maps.LatLng(addressDetails[1], addressDetails[2]);
-               
+                console.log("*******" +lat);
+                  geocoder1.geocode({
+                        'latLng': lat
+                    }, 
+                    function(results, status) {
+                        if (status == google.maps.GeocoderStatus.OK) {
+                            if (results) {
+                                locationAddress = results[0].formatted_address;
+                                locationAddress2 = results[1].formatted_address;
+                                 console.log("***********" +locationAddress);
+                                markerTitle = results[0].address_components[1].long_name;
+
+                    google.maps.event.addListener( marker, 'click', function () {
+                    closeInfos();
+                    var info = new google.maps.InfoWindow({content: locationAddress1});
+                    //On click the map will load the info window
+                    info.open(map,this);
+                    infos[0]=info;
+                });
+                            }
+
+                        } else {
+                            alert("Could not get the geolocation information");
+                        }
+
+                 });
                 //Create a new marker and info window
                 marker = new google.maps.Marker({
                     map: map,
@@ -188,22 +212,16 @@ function failPosition(error) {
                     },
                     position: lat,
                     //Content is what will show up in the info window
-                    content: addressDetails[0]
+                    //content: markerTitle
                 });
                
 
         document.getElementById('submit').addEventListener('click', function() {
-          geocodeAddress(myGeocoder, map);
+          geocodeAddress(geocoder, map);
         });
                                 //Pushing the markers into an array so that it's easier to manage them
                 markersArray.push(marker);
-                google.maps.event.addListener( marker, 'click', function () {
-                    closeInfos();
-                    var info = new google.maps.InfoWindow({content: this.content});
-                    //On click the map will load the info window
-                    info.open(map,this);
-                    infos[0]=info;
-                });
+                
                //Extends the boundaries of the map to include this new location
                bounds.extend(lat);
             }
