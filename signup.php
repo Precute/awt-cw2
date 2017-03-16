@@ -1,19 +1,30 @@
-<!doctype html>
-<html>
-<head>
-<title>
-</title>
-<!-- jQuery client-side validation -->
-<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
-<script src="https://cdn.jsdelivr.net/jquery.validation/1.15.0/jquery.validate.min.js"></script>
-<script src="https://cdn.jsdelivr.net/jquery.validation/1.15.0/additional-methods.min.js"></script>
-</head>
-
-<body>
-
 <?php // Example 26-5: signup.php
   require_once 'header.php';
+?>
+<script>
+$(document).ready(function(){ 
 
+ $("#myform").validate({
+
+  rules: {
+    email: {
+      required: true,
+      email: true
+    } 
+  },
+
+  messages: {
+
+    email: "Please enter a valid email address"
+            }
+        });
+ });
+
+function submitForm (){
+  form.submit();
+}
+</script>
+<?php
   echo <<<_END
   <script>
     function checkUser(user)
@@ -57,7 +68,7 @@
    <div class="container"> <h2>Please enter your details to sign up</h2>
 _END;
 
-  $error = $user = $pass = $email = $firstname = $surname = "";
+ $error = $user = $pass = $email = $firstname = $surname = "";
   if (isset($_SESSION['user'])) destroySession();
 
   if (isset($_POST['user']))
@@ -80,7 +91,7 @@ _END;
       else
       {
         queryMysql("INSERT INTO members VALUES('$user', '$pass', '$email', '$firstname', '$surname', '$gender')");
-        die("<h4>Account created</h4>Please Log in.<br><br>");
+        die("<h4>Account created</h4>Please<a href=\"login.php\"> Log in</a>.<br><br>");
       }
     }
   }
@@ -94,32 +105,28 @@ _END;
       <div class="col-sm-10">
         <input  type='text' maxlength='16' name='user' value='$user'
       onBlur='checkUser(this)' class="form-control"  placeholder="Enter Username">
-      </div>
+      </div> <span id='info'></span><br>
     </div>
 
-   
     
     <div class="form-group">
       <label class="control-label col-sm-2" >Password:</label>
       <div class="col-sm-10">
-        <input  type='password' maxlength='16' name='pass' value='$pass'
-      onBlur='checkUser(this)' class="form-control"  placeholder="Enter Password">
+        <input  type='password' maxlength='16' name='pass' id='pass' value='$pass' class="form-control"  placeholder="Enter Password">
       </div>
     </div>
 
     <div class="form-group">
       <label class="control-label col-sm-2" >Confirm Password:</label>
       <div class="col-sm-10">
-        <input  type='password' maxlength='16' name='confirmpass' value='$confirmpass'
-      onBlur='checkUser(this)' class="form-control"  placeholder="Confirm Password">
+        <input  type='password' maxlength='16' name='confirmpass' id='confirmpass' value='$confirmpass' class="form-control"   placeholder="Confirm Password">
       </div>
     </div>
 
     <div class="form-group">
       <label class="control-label col-sm-2" >Email:</label>
       <div class="col-sm-10">
-        <input  type='text' maxlength='60' name='email' value='$email'
-      onBlur='checkUser(this)' class="form-control"  placeholder="Enter Email">
+        <input  type='text' maxlength='100' name='email' value='$email'  class="form-control"  placeholder="Enter Email">
       </div>
     </div>
 
@@ -128,7 +135,7 @@ _END;
       <label class="control-label col-sm-2" >Firstname:</label>
       <div class="col-sm-10">
         <input  type='text' maxlength='60' name='firstname' value='$firstname'
-      onBlur='checkUser(this)' class="form-control"  placeholder="Enter Firstname">
+       class="form-control"  placeholder="Enter Firstname">
       </div>
     </div>
     
@@ -136,7 +143,7 @@ _END;
       <label class="control-label col-sm-2" >Surname:</label>
       <div class="col-sm-10">
         <input  type='text' maxlength='16' name='surname' value='$surname'
-      onBlur='checkUser(this)' class="form-control"  placeholder="Enter Surname">
+     class="form-control"  placeholder="Enter Surname">
       </div>
     </div>
     <label class="control-label col-sm-2" >Gender:</label>
@@ -157,7 +164,7 @@ _END;
     $male_status = 'unchecked';
     $female_status = 'unchecked';
 
-    if (isset($_POST['Submit1'])) {
+    if (isset($_POST['gender'])) {
          $selected_radio = $_POST['gender'];
 
          if ($selected_radio == 'male') {
@@ -170,41 +177,52 @@ _END;
 
 
     <span class='fieldname'>&nbsp;</span>
-
 <div class="form-group">        
       <div class="col-sm-offset-2 col-sm-10">
-        <button type="submit" value='Sign up' class="btn btn-default"><span class="glyphicon glyphicon-user" style="margin-right: 0.5em"></span>Create Account</button>
+        <button type="submit" value='Sign up'  class="btn btn-default"><span class="glyphicon glyphicon-user" style="margin-right: 0.5em"></span>Create Account</button>
       </div>
     </div>
-
     </form>
 
   </div><br>
-    
-    <script>
-$(document).ready(function(){ 
+     <!--include jQuery -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"
+type="text/javascript"></script>
+<!--include jQuery Validation Plugin-->
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.12.0/jquery.validate.min.js"
+type="text/javascript"></script>
+<!--Optional: include only if you are using the extra rules in additional-methods.js -->
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.12.0/additional-methods.min.js"
+type="text/javascript"></script>
+    <script type="text/javascript">$(function()
+{
 
- $("#myform").validate({
+  $("#myform").validate({
 
   rules: {
     email: {
       required: true,
       email: true
-    } 
+    },
+    confirmpass: {
+                    equalTo : "#pass"
+                }
   },
 
   messages: {
 
-    email: "Please enter a valid email address"
-            },
-            submitHandler: submitForm
+     email: 
+          {
+            required: "Please enter your email address. This is required to contact you later."
+          },
+    confirmpass: 
+          {
+            equalTo: "Your password confirmation does not match. Please check and try again."
+          }
+            }
         });
- });
-
-function submitForm (){
-  form.submit();
-}
-</script>
+ 
+});</script>
 
   </body>
 </html>

@@ -124,3 +124,7 @@ li a:hover, .button:hover {
   background:#aad1e3;
 }
 
+.error
+{
+color:red;
+}

@@ -142,7 +142,7 @@ function failPosition(error) {
                   zoom: 18,
                   mapTypeId: 'ROADMAP',
                   fullscreenControl: true
-                }):
+                });
             //Load the Map into the map_canvas div
             //var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
             //map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
