@@ -1,29 +1,6 @@
 <?php // Example 26-5: signup.php
   require_once 'header.php';
 ?>
-<script>
-$(document).ready(function(){ 
-
- $("#myform").validate({
-
-  rules: {
-    email: {
-      required: true,
-      email: true
-    } 
-  },
-
-  messages: {
-
-    email: "Please enter a valid email address"
-            }
-        });
- });
-
-function submitForm (){
-  form.submit();
-}
-</script>
 <?php
   echo <<<_END
   <script>
