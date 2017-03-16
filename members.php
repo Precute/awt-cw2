@@ -17,12 +17,12 @@
     <div id ="indexProfile"><div class="col-sm-4">
     <?php
     showProfile($view);
-    $lat = $_SESSION['lat'];
- $long = $_SESSION['long'];
+    
     $date = date('Y-m-d h:i:s');
-    if(isset($_POST['submit']))
+    if(isset($_POST['submit']) && isset($_SESSION['lat']) && isset($_SESSION['lat']))
 {
-  
+     $lat = $_SESSION['lat'];
+    $long = $_SESSION['long']; 
     $shareLocation = $_POST['shareLocation'];
     
     queryMysql("INSERT INTO track_location VALUES ('$view', '$long', '$lat', '$date' , '$shareLocation')");

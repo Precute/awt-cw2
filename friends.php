@@ -81,7 +81,7 @@
   echo "<div class='form-group'>".
       "<div class='col-sm-10'>" .
         "<a class='btn btn-info' href='messages.php?view=$view'>" .
-         "<span class='glyphicon glyphicon-envelope' style='margin-right: 0.5em'></span>View $name messages</a><br><br>" .
+         "<span class='glyphicon glyphicon-envelope' style='margin-right: 0.5em'></span>View $name2 messages</a><br><br>" .
       "</div>";
 ?>
 

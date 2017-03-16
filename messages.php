@@ -46,14 +46,12 @@
     <div class="radio-inline">
       <label><input type="radio" name="pm" value= '1' >Private</label>
     </div>
-
-  
-      <div class="form-group">        
+       <div class="form-group">        
       <div class="col-sm-offset-2 col-sm-10">
         <button type="submit" value='Post Message' class="btn btn-default"><span class="glyphicon glyphicon-level-up" style="margin-right: 0.5em"></span>Post Message</button>
       </div>
     </div>
-    </form><br>
+    </form>
 _END;
 
     if (isset($_GET['erase']))
