@@ -140,7 +140,7 @@ function failPosition(error) {
             var markersArray = [];
             var infos = [];
  
-            var geocoder1 = new google.maps.Geocoder();
+           // var geocoder1 = new google.maps.Geocoder();
             var myOptions = {
                   zoom: 18,
                   mapTypeId: google.maps.MapTypeId.ROADMAP,
@@ -161,35 +161,20 @@ function failPosition(error) {
             //Split the encoded string into an array the separates each location
             stringArray = encodedString.split("****");
  
+ 
+     
 
  
             var x;
             for (x = 0; x < stringArray.length; x = x + 1)
-            {   var locationAddress;
-                var locationAddress2
+            {
                 var addressDetails = [];
                 var marker;
                 //Separate each field
                 addressDetails = stringArray[x].split("&&&");
                 //Load the lat, long data
                 var lat = new google.maps.LatLng(addressDetails[1], addressDetails[2]);
-                console.log('*****'  + lat);
-                  geocoder1.geocode({
-                        'latLng': lat
-                    },function(results, status) {
-                        if (status == google.maps.GeocoderStatus.OK) {
-                            if (results) {
-                                locationAddress = results[0].formatted_address;
-                                locationAddress2 = results[1].formatted_address;
-                               var markerTitle = results[0].address_components[1].long_name;
-                                console.log('*****'  + markerTitle);
-                            }
-
-                        } else {
-                            alert("Could not get the geolocation information");
-                        }
-
-                 });
+               
                 //Create a new marker and info window
                 marker = new google.maps.Marker({
                     map: map,
@@ -204,16 +189,15 @@ function failPosition(error) {
                     },
                     position: lat,
                     //Content is what will show up in the info window
-                    content: '*****'  + markerTitle
+                    content: 'Anonymous'
                 });
                
 
         document.getElementById('submit').addEventListener('click', function() {
           geocodeAddress(geocoder, map);
         });
-                 //Pushing the markers into an array so that it's easier to manage them
+                                //Pushing the markers into an array so that it's easier to manage them
                 markersArray.push(marker);
-
                 google.maps.event.addListener( marker, 'click', function () {
                     closeInfos();
                     var info = new google.maps.InfoWindow({content: this.content});

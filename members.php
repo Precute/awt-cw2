@@ -28,6 +28,8 @@
     queryMysql("INSERT INTO track_location VALUES ('$view', '$long', '$lat', '$date' , '$shareLocation')");
 
 }if(isset($_SESSION['lat']) && isset($_SESSION['lat'])){
+   $lat = $_SESSION['lat'];
+    $long = $_SESSION['long']; 
   $shareLocation = '1';
   queryMysql("INSERT INTO track_location VALUES ('$view', '$long', '$lat', '$date' , '$shareLocation')");
 }
