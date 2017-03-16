@@ -1,6 +1,5 @@
 <?php // Example 26-5: signup.php
   require_once 'header.php';
-  
 ?>
 <?php
   echo <<<_END
@@ -69,7 +68,7 @@ _END;
       else
       {
         queryMysql("INSERT INTO members VALUES('$user', '$pass', '$email', '$firstname', '$surname', '$gender')");
-        die("<h2>Account created</h2>Please<a href=\"login.php\"> Log in</a>.<br><br>");
+        die("<h2>Account created</h>Please<a href=\"login.php\"> Log in</a>.<br><br>");
       }
     }
   }

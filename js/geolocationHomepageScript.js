@@ -181,7 +181,7 @@ function failPosition(error) {
                             if (results) {
                                 locationAddress = results[0].formatted_address;
                                 locationAddress2 = results[1].formatted_address;
-                                markerTitle = results[0].address_components[1].long_name;
+                               var markerTitle = results[0].address_components[1].long_name;
                                 console.log('*****'  + markerTitle);
                             }
 
@@ -204,7 +204,7 @@ function failPosition(error) {
                     },
                     position: lat,
                     //Content is what will show up in the info window
-                    content: '*****'  + lat
+                    content: '*****'  + markerTitle
                 });
                
 
