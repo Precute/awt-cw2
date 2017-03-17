@@ -28,7 +28,6 @@
        "      src=\"https://maps.googleapis.com/maps/api/js?key=AIzaSyApczdYj25JGm98yRR7a2YRBIOZH5vHDxI\">\n".
        "    </script>\n" .
 
-
        "<script src=\"//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js\"></script>" .
 
        "<script type='text/javascript' src='js/jquery.gomap.js'></script> ".

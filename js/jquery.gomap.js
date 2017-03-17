@@ -8,10 +8,9 @@
  */
 
 (function($) {
-	var geocoder = new google.maps.Geocoder();
 
 	function MyOverlay(map) { this.setMap(map); };
-	MyOverlay.prototype = new google.maps.OverlayView();
+	//MyOverlay.prototype = new google.maps.OverlayView();
 	MyOverlay.prototype.onAdd = function() { };
 	MyOverlay.prototype.onRemove = function() { };
 	MyOverlay.prototype.draw = function() { };

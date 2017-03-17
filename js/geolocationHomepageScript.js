@@ -6,18 +6,18 @@ var latLong, startLat, startLong;
 var uMaps;
 var geocoder;
 var start = 1;
-var markerTitle;
+//var map;
 
 
 function getCurrentPosition() {
-    if (geoPosition.init()) {
-        geoPosition.getCurrentPosition(successCallback, failPosition, {
-            enableHighAccuracy: true,
+    if(geoPosition.init()){
+            geoPosition.getCurrentPosition(successCallback,failPosition ,{
+                 enableHighAccuracy: true,
             timeout: 5 * 60 * 10000,
             maximumAge: 60 * 000
-                //positionOptions.enableHighAccuracy: false         
-        });
-    } else {
+            });
+        }
+     else {
         document.getElementById("location").innerHTML = "Your browser does not support HTMLS Golocation API";
     }
 
@@ -54,8 +54,7 @@ function successCallback(watch) {
     latLong = new google.maps.LatLng(lat, long);
     geocoder.geocode({
         'latLng': latLong
-    }, 
-    function(results, status) {
+    }, function(results, status) {
         if (status == google.maps.GeocoderStatus.OK) {
             if (results) {
                 locationAddress = results[0].formatted_address;
@@ -112,7 +111,7 @@ function failPosition(error) {
         errorCode = "Something else has gone wrong";
     }
 
-    alert("Error code: " + errorCode + " Error message: " + error.message);
+    alert("Error code: " + errorCode );
 
 }
 
@@ -140,12 +139,13 @@ function failPosition(error) {
             var markersArray = [];
             var infos = [];
  
-           // var geocoder1 = new google.maps.Geocoder();
+            geocoder = new google.maps.Geocoder();
             var myOptions = {
                   zoom: 18,
                   mapTypeId: google.maps.MapTypeId.ROADMAP,
                   fullscreenControl: true
                 };
+
             //Load the Map into the map_canvas div
            var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
             map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
@@ -160,10 +160,6 @@ function failPosition(error) {
             encodedString = document.getElementById("encodedString").value;
             //Split the encoded string into an array the separates each location
             stringArray = encodedString.split("****");
- 
- 
-     
-
  
             var x;
             for (x = 0; x < stringArray.length; x = x + 1)

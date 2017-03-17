@@ -1,5 +1,7 @@
 <?php // Example 26-9: members.php
   require_once 'header.php';
+   $ip = $_REQUEST['REMOTE_ADDR']; // the IP address to query
+  $query = @unserialize(file_get_contents('http://ip-api.com/php/'.$ip));
 
   if (!$loggedin) die();
 
@@ -11,13 +13,17 @@
 
     if ($view == $user) $name = "Your";
     else                $name = "$view's";
-    
     echo "<h3>$name Profile</h3><form method = 'post' class='form-horizontal'><div class='row'>";
+
     ?>
-    <div id ="indexProfile"><div class="col-sm-4">
+    <div id ="indexProfile"><div class="col-sm-4" style = 'color: #2d94b5;'>
     <?php
     showProfile($view);
-    
+       if($query && $query['status'] == 'success') {
+  echo $query['country'].', '.$query['city'];
+} else {
+  echo 'Location unavailable';
+}
     $date = date('Y-m-d h:i:s');
     if(isset($_POST['submit']) && isset($_SESSION['lat']) && isset($_SESSION['lat']))
 {
@@ -105,4 +111,21 @@
 
     </div></div></div>
   </body>
+  <script type="text/javascript">
+
+function getCurrentPosition() {
+    if (geoPosition.init()) {
+        geoPosition.getCurrentPosition(successCallback, failPosition, {
+            enableHighAccuracy: true,
+            timeout: 5 * 60 * 10000,
+            maximumAge: 60 * 000
+                //positionOptions.enableHighAccuracy: false         
+        });
+        
+    } else {
+        window.onload = ipLocation();
+    }
+
+}
+</script>
 </html>
