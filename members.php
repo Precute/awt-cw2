@@ -1,9 +1,11 @@
 <?php // Example 26-9: members.php
   require_once 'header.php';
+   $ip = $_REQUEST['REMOTE_ADDR']; // the IP address to query
+  $query = @unserialize(file_get_contents('http://ip-api.com/php/'.$ip));
 
   if (!$loggedin) die();
 
-  echo "<div class='main'>";
+  echo "<div class='container'>";
 
   if (isset($_GET['view']))
   {
@@ -11,22 +13,50 @@
 
     if ($view == $user) $name = "Your";
     else                $name = "$view's";
-    
-    echo "<h3>$name Profile</h3>";
+    echo "<h3>$name Profile</h3><form method = 'post' class='form-horizontal'><div class='row'>";
+
+    ?>
+    <div id ="indexProfile"><div class="col-sm-4" style = 'color: #2d94b5;'>
+    <?php
     showProfile($view);
-
- $lat = $_SESSION['lat'];
- $long = $_SESSION['long'];
+       if($query && $query['status'] == 'success') {
+  echo $query['country'].', '.$query['city'];
+} else {
+  echo 'Location unavailable';
+}
     $date = date('Y-m-d h:i:s');
-    queryMysql("INSERT INTO track_location VALUES ('$view', '$long', '$lat', '$date' )");
+    if(isset($_POST['submit']) && isset($_SESSION['lat']) && isset($_SESSION['lat']))
+{
+     $lat = $_SESSION['lat'];
+    $long = $_SESSION['long']; 
+    $shareLocation = $_POST['shareLocation'];
+    
+    queryMysql("INSERT INTO track_location VALUES ('$view', '$long', '$lat', '$date' , '$shareLocation')");
 
-    echo "<a class='button' href='messages.php?view=$view'>" .
-         "View $name messages</a><br><br>";
-                echo "<div id=\"location\"></div></br>";
-   echo "<div id = \"showMap\" style= \"width:800px;height:500px\"></div>";
-    die("</div></body></html>");
+}if(isset($_SESSION['lat']) && isset($_SESSION['lat'])){
+   $lat = $_SESSION['lat'];
+    $long = $_SESSION['long']; 
+  $shareLocation = '1';
+  queryMysql("INSERT INTO track_location VALUES ('$view', '$long', '$lat', '$date' , '$shareLocation')");
+}
+ 
+ 
+     echo "<div class='form-group'>".
+      "<div class='col-sm-10'>" .
+        "<a class='btn btn-info' href='messages.php?view=$view'>" .
+         "<span class='glyphicon glyphicon-envelope' style='margin-right: 0.5em'></span>View $name messages</a><br><br>" .
+    "</div>".
+    "</div></div></div><div class='col-sm-8'>".
+    "<div id=\"location\" style = 'color: #2d94b5;'><b>Current Location: </b>" .
+     "<div class='radio-inline'>".
+      "<label><input type='radio' name='shareLocation' value= '0' >Public</label>".
+    "</div>".
+    "<div class='radio-inline'>".
+      "<label><input type='radio' name='shareLocation' value= '1' checked='checked' >Private  </label>".
+    "</div><input type='submit' name='submit' class='btn btn-default' value='Share'/></div>".
+    "<div id = \"showMap\" style= \"width:100%;height:500px\"></div></div>";
+    die("</div></div></form></body></html>");
   }
-
   if (isset($_GET['add']))
   {
     $add = sanitizeString($_GET['add']);
@@ -44,7 +74,9 @@
   $result = queryMysql("SELECT user FROM members ORDER BY user");
   $num    = $result->num_rows;
 
-  echo "<h3>Other Members</h3><ul>";
+  echo "<div class='row'><h3>Other Members</h3><div class='mainList'><ul>";
+       
+  echo "<div id =id=\"otherMember\" ><div class='col-sm-10'>";
 
   for ($j = 0 ; $j < $num ; ++$j)
   {
@@ -69,9 +101,31 @@
     
     if (!$t1) echo " [<a href='members.php?add="   .$row['user'] . "'>$follow</a>]";
     else      echo " [<a href='members.php?remove=".$row['user'] . "'>drop</a>]";
+
+
   }
+  echo "</ul></div>" .
+      "<div class='col-sm-8'><div id =\"memberMap\" style= \"width:100%;height:500px\">" .
+      "</div></div></div>";
 ?>
 
-    </ul></div>
+    </div></div></div>
   </body>
+  <script type="text/javascript">
+
+function getCurrentPosition() {
+    if (geoPosition.init()) {
+        geoPosition.getCurrentPosition(successCallback, failPosition, {
+            enableHighAccuracy: true,
+            timeout: 5 * 60 * 10000,
+            maximumAge: 60 * 000
+                //positionOptions.enableHighAccuracy: false         
+        });
+        
+    } else {
+        window.onload = ipLocation();
+    }
+
+}
+</script>
 </html>

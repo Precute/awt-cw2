@@ -28,16 +28,29 @@
       $name2 = "$view's";
     }
 
-    echo "<div class='main'><h3>$name1 Messages</h3>";
+    echo "<div class='container'><h3>$name1 Messages</h3>";
     showProfile($view);
     
     echo <<<_END
-      <form method='post' action='messages.php?view=$view'>
+      <form class='form-horizontal' method='post' action='messages.php?view=$view'>
       Type here to leave a message:<br>
-      <textarea name='text' cols='40' rows='3'></textarea><br>
-      Public<input type='radio' name='pm' value='0' checked='checked'>
-      Private<input type='radio' name='pm' value='1'>
-      <input type='submit' value='Post Message'></form><br>
+      <div class="form-group">
+      <div class="col-sm-10">
+        <textarea name='text' cols='50' rows='3'></textarea>
+      </div>
+    </div>
+      
+      <div class="radio-inline">
+      <label><input type="radio" name="pm" value= '0' checked="checked" >Public</label>
+    </div>
+    <div class="radio-inline">
+      <label><input type="radio" name="pm" value= '1' >Private</label>
+    </div>
+       <div class="form-group">        
+      <div class="col-sm-offset-2 col-sm-10">
+        <button type="submit" value='Post Message' class="btn btn-default"><span class="glyphicon glyphicon-level-up" style="margin-right: 0.5em"></span>Post Message</button>
+      </div>
+    </div></form>
 _END;
 
     if (isset($_GET['erase']))
@@ -76,9 +89,14 @@ _END;
 
   if (!$num) echo "<br><span class='info'>No messages yet</span><br><br>";
 
-  echo "<br><a class='button' href='messages.php?view=$view'>Refresh messages</a>";
+  echo "<br><br><div class='form-group'>".
+      "<div class='col-sm-10'>" .
+        "<a class='btn btn-info' href='messages.php?view=$view'>" .
+         "<span class='glyphicon glyphicon-retweet' style='margin-right: 0.5em'></span>Refresh Messages</a><br><br>" .
+      "</div>";
 ?>
 
     </div><br>
   </body>
+  
 </html>

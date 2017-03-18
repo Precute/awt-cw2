@@ -1,13 +1,9 @@
 <?php
- 
-
-$dbhost  = 'mudfoot.doc.stu.mmu.ac.uk';    // Unlikely to require changing
-  $dbname  = 'arpalikh';   // Modify these...
-  $dbuser  = 'arpalikh';   // ...variables according
-  $dbpass  = 'Vanscerq9';   // ...to your installation
+  $dbhost  = 'mudfoot.doc.stu.mmu.ac.uk';    // Unlikely to require changing
+  $dbname  = 'tanveeah';   // Modify these...
+  $dbuser  = 'tanveeah';   // ...variables according
+  $dbpass  = 'wErthlep4';   // ...to your installation
   $appname = "Robin's Nest"; // ...and preference
-
-
   //$dbhost = ; // the database host
 //$dbuser = 'igbinoso' ; 
 //$dbpass = 'jesSplam6' ; // password

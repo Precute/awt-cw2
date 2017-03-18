@@ -15,41 +15,74 @@
   }
   else $loggedin = FALSE;
 
-  echo "<title>$appname$userstr</title><link rel='stylesheet' " .
-       "href='styles.css' type='text/css'>"                     .
+  echo "<meta charset='utf-8'>" .
+      "<title>$appname$userstr</title>" .
+      " <link href='css/styles.css' rel='stylesheet'>".
+      " <link href='css/bootstrap.min.css' rel='stylesheet'>".
+       "<link href='css/bootstrap-theme.min.css' rel='stylesheet'>" .
        "</head>".
-       "<body><center><canvas id='logo' width='624' "    .
-       "height='96'>$appname</canvas></center>"             .
-       "<div class='appname'>$appname$userstr</div>"            .
-       "<script src='javascript.js'></script>" .
-" <script async defer\n" ;
-echo "      src=\"https://maps.googleapis.com/maps/api/js?key=AIzaSyApczdYj25JGm98yRR7a2YRBIOZH5vHDxI\">\n"; 
-echo "    </script>\n" .
-"<script src=\"//ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js\"></script>";
-echo "  <script src='geolocationHomepageScript.js'>\n"; 
-echo "  </script>\n"; 
-echo "  <script type=\"text/javascript\">\n"; 
-echo "    window.onload = watchPosition;\n"; 
+       "<body class='row' id ='mybody'><div id='divlogo'><canvas class='img-responsive' id='logo' width='624' "    .
+       "height='96'>$appname</canvas></div>"             .
+       "<div class='appname'></div>"            .
+       " <script async defer\n" .
+       "      src=\"https://maps.googleapis.com/maps/api/js?key=AIzaSyApczdYj25JGm98yRR7a2YRBIOZH5vHDxI\">\n".
+       "    </script>\n" .
+
+       "<script src=\"//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js\"></script>" .
+
+       "<script type='text/javascript' src='js/jquery.gomap.js'></script> ".
+       "<script src='js/javascript.js'></script>" .
+       "<script src='js/geoPosition.js' type='text/javascript' charset='utf-8'></script> ".
+       "<script src='js/geoPositionSimulator.js' type='text/javascript' charset='utf-8'></script>".
+       "  <script src='js/bootstrap.min.js'></script>" .
+       "  <script src='js/geolocationHomepageScript.js'>\n" .
+       "  </script>\n"; 
+       echo "  <script type=\"text/javascript\">\n"; 
+echo "    window.onload = getCurrentPosition;\n"; 
 echo "  </script>\n";
+
+
+
 
   if ($loggedin)
   {
-    echo "<br ><ul class='menu'>" .
-         "<li><a href='members.php?view=$user'>Home</a></li>" .
-         "<li><a href='members.php'>Members</a></li>"         .
-         "<li><a href='friends.php'>Friends</a></li>"         .
-         "<li><a href='#'>Location History</a></li>"       .
-          "<li><a href='messages.php'>Messages</a></li>"       .
-         "<li><a href='profile.php'>Edit Profile</a></li>"    .
-         "<li><a href='logout.php'>Log out</a></li></ul><br>";
+
+    echo "<nav class=\"navbar navbar-inverse\">\n";
+    echo "  <div class=\"container-fluid\">\n";
+    echo "    <div class=\"navbar-header\">\n";
+    echo "      <a class=\"navbar-brand\" href=\"#\">$appname$userstr</a>\n";
+    echo "    </div>\n";
+    echo "    <ul class=\"nav navbar-nav\">\n";
+    echo "      <li class=\"active\"><a href='members.php?view=$user'>Home</a></li>\n";
+    echo "      <li><a href='members.php'>Members</a></li>\n";
+    echo "      <li><a href='friends.php'>Friends</a></li>\n";
+    echo "      <li><a href='locationhistory.php'>Location History</a></li>\n";
+    echo "      <li><a href='messages.php'>Messages</a></li>\n";
+    echo "      <li><a href='profile.php'>Profile</a></li>\n";
+    echo "    </ul>\n";
+    echo "    <ul class=\"nav navbar-nav navbar-right\">\n";
+    echo "      <li><a href=\"logout.php\"><span class=\"glyphicon glyphicon-log-out\"></span> Logout</a></li>\n";
+    echo "    </ul>\n";
+    echo "  </div>\n";
+    echo "</nav>";
+
+
   }
   else
   {
-    echo ("<br><ul class='menu'>" .
-          "<li><a href='index.php'>Home</a></li>"                .
-          "<li><a href='signup.php'>Sign up</a></li>"            .
-          "<li><a href='login.php'>Log in</a></li></ul><br>"     .
-          "<span class='info'>&#8658; You must be logged in to " .
-          "view this page.</span><br><br>");
+    echo "<nav class=\"navbar navbar-inverse\">\n";
+    echo "  <div class=\"container-fluid\">\n";
+    echo "    <div class=\"navbar-header\">\n";
+    echo "      <a class=\"navbar-brand\" href=\"index.php\">$appname$userstr</a>\n";
+    echo "    </div>\n";
+    echo "    <ul class=\"nav navbar-nav\">\n";
+    echo "      <li class=\"active\"><a href=\"index.php\">Home</a></li>\n";
+    echo "    </ul>\n";
+    echo "    <ul class=\"nav navbar-nav navbar-right\">\n";
+    echo "      <li><a href=\"signup.php\"><span class=\"glyphicon glyphicon-user\"></span> Sign Up</a></li>\n";
+    echo "      <li><a href=\"login.php\"><span class=\"glyphicon glyphicon-log-in\"></span> Login</a></li>\n";
+    echo "    </ul>\n";
+    echo "  </div>\n";
+    echo "</nav>";
   }
 ?>

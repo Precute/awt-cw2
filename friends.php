@@ -18,7 +18,7 @@
     $name3 = "$view is";
   }
 
-  echo "<div class='main'>";
+  echo "<div class='container'>";
 
   // Uncomment this line if you wish the user’s profile to show here
   // showProfile($view);
@@ -78,8 +78,11 @@
 
   if (!$friends) echo "<br>You don't have any friends yet.<br><br>";
 
-  echo "<a class='button' href='messages.php?view=$view'>" .
-       "View $name2 messages</a>";
+  echo "<div class='form-group'>".
+      "<div class='col-sm-10'>" .
+        "<a class='btn btn-info' href='messages.php?view=$view'>" .
+         "<span class='glyphicon glyphicon-envelope' style='margin-right: 0.5em'></span>View $name2 messages</a><br><br>" .
+      "</div>";
 ?>
 
     </div><br>

@@ -1,8 +1,8 @@
 <?php // Example 26-1: functions.php
   $dbhost  = 'mudfoot.doc.stu.mmu.ac.uk';    // Unlikely to require changing
-  $dbname  = 'arpalikh';   // Modify these...
-  $dbuser  = 'arpalikh';   // ...variables according
-  $dbpass  = 'Vanscerq9';   // ...to your installation
+  $dbname  = 'tanveeah';   // Modify these...
+  $dbuser  = 'tanveeah';   // ...variables according
+  $dbpass  = 'wErthlep4';   // ...to your installation
   $appname = "Robin's Nest"; // ...and preference
 
   //$dbhost = ; // the database host
@@ -52,14 +52,15 @@
   function showProfile($user)
   {
     if (file_exists("$user.jpg"))
-      echo "<img src='$user.jpg' style='float:left;'>";
+      echo "<img src='$user.jpg' ><br>";
 
     $result = queryMysql("SELECT * FROM profiles WHERE user='$user'");
     
     if ($result->num_rows)
     {
       $row = $result->fetch_array(MYSQLI_ASSOC);
-      echo stripslashes($row['text']) . "<br style='clear:left;'><br>";
+      echo stripslashes("<div id= 'myProfile'><br><br><span class='glyphicon glyphicon-info-sign' style='margin-right: 0.40em'><b><p>".  $row['text']) . "</p></b><br style='clear:left;'><br></div>";
     }
   }
+  
 ?>
