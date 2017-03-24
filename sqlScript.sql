@@ -12,9 +12,9 @@ CREATE TABLE IF NOT EXISTS track_location (
     constraint fk_username foreign key (username) references members (user)
  )ENGINE=INNODB;
 
-INSERT INTO `tanveeah`.`members` (`user`, `pass`) VALUES ('precute', 'precute');
-INSERT INTO `tanveeah`.`members` (`user`, `pass`) VALUES ('tester', 'tester');
-INSERT INTO `tanveeah`.`members` (`user`, `pass`) VALUES ('precious', 'password');
+INSERT INTO `members` (`user`, `pass`) VALUES ('precute', 'precute');
+INSERT INTO `members` (`user`, `pass`) VALUES ('tester', 'tester');
+INSERT INTO `members` (`user`, `pass`) VALUES ('precious', 'password');
 
  INSERT INTO track_location( username, Longitude, Latitude ) VALUES
 ('precious',53.45551661,-2.20387357),
@@ -57,5 +57,22 @@ from track_location
 join  friends 
 where friends.friend ="precious" and track_location.shareLocation = 0
 group by user;
+
+CREATE TABLE IF NOT EXISTS products (
+  id varchar(10) NOT NULL,
+  name varchar(512) NOT NULL,
+  description text NOT NULL,
+  price decimal(10,2) NOT NULL,
+  details text NOT NULL,
+  created timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (id)
+);
+INSERT INTO `products` (`id`, `name`, `description`, `price`, `details`) VALUES ('RN-TSH1', 'Robin\'s Nest T-Shirt', 'A timeless classic - The world’s favourite garment in its purest shape. An essential basic for every day.', 15.00, 'An everyday essential, this basic t-shirt is made from soft pima cotton. A regular fit, it has short sleeves and a classic round neckline.');
+INSERT INTO `products` (`id`, `name`, `description`, `price`, `details`) VALUES ('RN-MUG1', 'Robin\'s Nest Mug', 'A porcelain body mug with printed Robin\'s Nest branding.', 8.00, 'Capacity: 330ml Material: Fine china; Freezer, microwave, dishwasher and oven safe.');
+INSERT INTO `products` (`id`, `name`, `description`, `price`, `details`) VALUES ('RN-BEA1', 'Robin\'s Nest Beanie Hat', 'Wrap up your accessories game with our beanies.', '16.50', 'Our beanies are made from 100% soft-touch acrylic in a double layer knit. Machine washable.');
+INSERT INTO `products` (`id`, `name`, `description`, `price`, `details`) VALUES ('RN-BAG1', 'Robin\'s Nest Tote Bag', 'Our totes are great for carrying shopping!', '9.5', '100% Cotton, Two-Tone Tote Bag with two strong handles.');
+INSERT INTO `products` (`id`, `name`, `description`, `price`, `details`) VALUES ('RN-TNK1', 'Robin\'s Nest Tank Top', 'Great for summer.', '17', '65% Polyester, 35% Cotton\nMachine Wash - Cold (30° max)');
+INSERT INTO `products` (`id`, `name`, `description`, `price`, `details`) VALUES ('RN-USB1', 'Robin\'s Nest USB Stick', 'Say goodbye to lost data with the Robin\'s Nest USB. ', '8', 'Its 2GB capacity will keep your files, photos and music safe and sound. Features a removable cap.');
+INSERT INTO `products` (`id`, `name`, `description`, `price`, `details`) VALUES ('RN-PEN1', 'Robin\'s Nest Ballpoint Pen', 'Great grip Robin\'s Nest branded ballpoint.', '3.50', 'Black ink ballpoint pen with long ink life.');
 
 

@@ -3,14 +3,11 @@
   font-family:verdana,sans-serif;
   font-size  :14pt;
 }
-
-#mybody {
+body {
   height: 100%;
   width: 100%;
-  background: #f6f3f1;
-  border: 1px solid;
-
 }
+
 #myProfile{
   color: #2d94b5;
 }
@@ -98,7 +95,6 @@ li a:hover, .button:hover {
    background :#7f848e;
 }
 #logo {
- 
   font-family:Georgia;
   font-weight:bold;
   font-style:italic;
@@ -132,4 +128,8 @@ color:red;
 .error
 {
 color:red;
+}
+
+#mybody img {
+  height: 50%;
 }
