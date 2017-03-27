@@ -41,6 +41,24 @@ shoppingCart.prototype.loadItems = function () {
     }
 }
 
+shoppingCart.prototype.placeOrder = function () {
+    var totalItems = $("#totalItems").val();
+    var totalPrice = $("#totalPrice").val();
+    var orderID = 0;
+    $.ajax({
+        method: "POST",
+        data: { totalItems: totalItems, totalPrice: totalPrice },
+        url: "backend_order.php",
+        cache: false,
+        dataType: "JSON",
+        async: false,
+        success: function(data) {        
+           orderID = data.id;  
+        }
+    });
+    return orderID;
+}
+
 // save items to local storage
 shoppingCart.prototype.saveItems = function () {
     if (localStorage != null && JSON != null) {
@@ -173,11 +191,14 @@ shoppingCart.prototype.checkoutPayPal = function (parms, clearCart) {
         data["quantity_" + ctr] = item.quantity;
         data["amount_" + ctr] = item.price.toFixed(2);
         data["currency_code"] = "GBP";
+        data["return"] = "https://23.251.132.64/awt-cw2/shop.php#/store";
+        data["cancel_return"] = "https://23.251.132.64/awt-cw2/shop.php#/store"; 
+        data["custom"] = this.placeOrder;
     }
 
     // build form
     var form = $('<form/></form>');
-    form.attr("action", "https://www.paypal.com/cgi-bin/webscr");
+    form.attr("action", "https://www.sandbox.paypal.com/cgi-bin/webscr");
     form.attr("method", "POST");
     form.attr("style", "display:none;");
     this.addFormFields(form, data);
@@ -224,4 +245,3 @@ function cartItem(sku, name, price, quantity) {
     this.price = price * 1;
     this.quantity = quantity * 1;
 }
-

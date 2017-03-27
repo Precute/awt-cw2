@@ -75,4 +75,29 @@ INSERT INTO `products` (`id`, `name`, `description`, `price`, `details`) VALUES 
 INSERT INTO `products` (`id`, `name`, `description`, `price`, `details`) VALUES ('RN-USB1', 'Robin\'s Nest USB Stick', 'Say goodbye to lost data with the Robin\'s Nest USB. ', '8', 'Its 2GB capacity will keep your files, photos and music safe and sound. Features a removable cap.');
 INSERT INTO `products` (`id`, `name`, `description`, `price`, `details`) VALUES ('RN-PEN1', 'Robin\'s Nest Ballpoint Pen', 'Great grip Robin\'s Nest branded ballpoint.', '3.50', 'Black ink ballpoint pen with long ink life.');
 
+CREATE TABLE IF NOT EXISTS orders (
+  id int(11) NOT NULL AUTO_INCREMENT,
+  totalitems int(11) NOT NULL,
+  totalprice decimal(10,2) NOT NULL,
+  timeorderplaced timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  transactionid int(11),
+  PRIMARY KEY (id),
+  FOREIGN KEY (transactionid) REFERENCES transactions(tid)
+); 
 
+CREATE TABLE IF NOT EXISTS `transactions` (
+  `TID` int(11) NOT NULL AUTO_INCREMENT,
+  `payer_email` varchar(150) NOT NULL,
+  `first_name` varchar(150) NOT NULL,
+  `last_name` varchar(150) NOT NULL,
+  `amount` float NOT NULL,
+  `currency` varchar(50) NOT NULL,  
+  `country` varchar(50) NOT NULL,
+  `txn_id` varchar(100) NOT NULL,
+  `txn_type` varchar(100) NOT NULL,
+  `payment_status` varchar(100) NOT NULL,
+  `payment_type` varchar(100) NOT NULL,
+  `payment_date` datetime NOT NULL,
+  `num_cart_items` varchar(100) NOT NULL,
+  PRIMARY KEY (`TID`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;

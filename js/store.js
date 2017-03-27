@@ -9,14 +9,12 @@ function store() {
         cache: false,
         dataType: "JSON",
         async: false,
-        success: function(data) {
-            
-                storeData = data;
-            
+        success: function(data) {        
+           storeData = data;  
         }
     });
 
-
+    console.log(storeData);
     this.products = storeData;
 }
 store.prototype.getProduct = function (sku) {
