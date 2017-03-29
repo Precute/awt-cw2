@@ -2,6 +2,7 @@
   require_once 'header.php';
 ?>
 <?php
+error_reporting(0);
   echo <<<_END
   <script>
     function checkUser(user)
@@ -160,13 +161,13 @@ _END;
   </div><br>
 
      <!--include jQuery -->
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"
 type="text/javascript"></script>
 <!--include jQuery Validation Plugin-->
-<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.12.0/jquery.validate.min.js"
+<script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.12.0/jquery.validate.min.js"
 type="text/javascript"></script>
 <!--Optional: include only if you are using the extra rules in additional-methods.js -->
-<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.12.0/additional-methods.min.js"
+<script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.12.0/additional-methods.min.js"
 type="text/javascript"></script>
     <script type="text/javascript">$(function()
 {

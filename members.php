@@ -1,5 +1,6 @@
 <?php // Example 26-9: members.php
   require_once 'header.php';
+  error_reporting(0);
    $ip = $_REQUEST['REMOTE_ADDR']; // the IP address to query
   $query = @unserialize(file_get_contents('http://ip-api.com/php/'.$ip));
 

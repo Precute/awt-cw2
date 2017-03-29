@@ -25,7 +25,7 @@
        "height='96'>$appname</canvas></div>"             .
        "<div class='appname'></div>"            .
        " <script async defer\n" .
-       "      src=\"https://maps.googleapis.com/maps/api/js?key=AIzaSyApczdYj25JGm98yRR7a2YRBIOZH5vHDxI\">\n".
+       "      src=\"https://maps.googleapis.com/maps/api/js?key=AIzaSyDZX4BJpzyeVj8ZNrc1xuwHyKP34ZHudyA\">\n".
        "    </script>\n" .
 
        "<script src=\"//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js\"></script>" .

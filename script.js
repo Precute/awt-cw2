@@ -60,7 +60,7 @@ function getPosition(){
         	seconds = "0"+seconds;
         }
         latLong = lat +"," +long
-		uMaps = "https://maps.googleapis.com/maps/api/staticmap?center="+latLong+"&zoom=16&size=6400x500&maptype=roadmap&key=AIzaSyApczdYj25JGm98yRR7a2YRBIOZH5vHDxI";
+		uMaps = "https://maps.googleapis.com/maps/api/staticmap?center="+latLong+"&zoom=16&size=6400x500&maptype=roadmap&key=AIzaSyDZX4BJpzyeVj8ZNrc1xuwHyKP34ZHudyA";
 		
 		if (document.getElementById("mymap") == null && document.getElementById("result") == null ) {
 			var mapOption ={
@@ -123,7 +123,7 @@ function getPosition(){
 			lat = 47.5952;
 			long = -122.3316;
 			latLong = lat +"," +long
-			uMaps = "https://maps.googleapis.com/maps/api/staticmap?center="+latLong+"&zoom=16&size=6400x500&maptype=hybrid&key=AIzaSyApczdYj25JGm98yRR7a2YRBIOZH5vHDxI";
+			uMaps = "https://maps.googleapis.com/maps/api/staticmap?center="+latLong+"&zoom=16&size=6400x500&maptype=hybrid&key=AIzaSyDZX4BJpzyeVj8ZNrc1xuwHyKP34ZHudyA";
 			
 			document.getElementById("staticmap").innerHTML= "<img src='" +uMaps+"'>";       
 		}
