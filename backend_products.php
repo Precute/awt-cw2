@@ -24,6 +24,5 @@ foreach($result as $row) {
 
 header('Content-Type: application/json');
 echo json_encode($products);
-error_log(json_encode($products));
 ob_end_flush();
 ?>

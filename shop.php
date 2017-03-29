@@ -13,6 +13,8 @@
     <!-- RobinsNestStore app -->
     <script src="js/product.js" type="text/javascript"></script>
     <script src="js/store.js" type="text/javascript"></script>
+    <script src="js/order.js" type="text/javascript"></script>
+    <script src="js/orders.js" type="text/javascript"></script>
     <script src="js/shoppingCart.js" type="text/javascript"></script>
     <script src="js/app.js" type="text/javascript"></script>
     <script src="js/controller.js" type="text/javascript"></script>

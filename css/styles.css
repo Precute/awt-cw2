@@ -133,3 +133,7 @@ color:red;
 #mybody img {
   height: 50%;
 }
+
+input[type="text"], input[type="number"] {
+  height: 34px !important;
+}

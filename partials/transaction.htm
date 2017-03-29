@@ -1,0 +1,72 @@
+﻿<p class="text-info">
+    These are the Paypal transaction details for Order ID <b>{{order.id}}</b> containing <b>{{order.totalitems}} items</b><br />
+</p>
+
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="span8">
+
+            <!-- product info -->
+            <table class="table table-bordered">
+
+                <tr class="well">
+                    <td class="tdRight" colspan="3" >
+                        Robin's Nest Transaction ID: <b>{{order.TID}}</b>
+                    </td>
+                </tr>
+                                   <tr>
+                    <td class="tdRight"><h3><b>Buyer Email</b></h3></td>
+                    <td class="tdCenter"><h3>{{order.payer_email}}</h3></td>
+                </tr>
+                                <tr>
+                    <td class="tdRight"><h3><b>Buyer Full Name</b></h3></td>
+                    <td class="tdCenter"><h3>{{order.first_name}} {{order.last_name}}</h3></td>
+                </tr>
+                <tr>
+                    <td class="tdRight"><h3><b>Paypal Transaction ID</b></h3></td>
+                    <td class="tdCenter"><h3>{{order.txn_id}}</h3></td>
+                </tr>
+                                <tr>
+                    <td class="tdRight"><h3><b>Paypal Transaction Type</b></h3></td>
+                    <td class="tdCenter"><h3>{{order.txn_type}}</h3></td>
+                </tr>
+                                <tr>
+                    <td class="tdRight"><h3><b>Paypal Transaction Amount</b></h3></td>
+                    <td class="tdCenter"><h3>{{order.amount}} {{order.currency}}</h3></td>
+                </tr>
+                                <tr>
+                    <td class="tdRight"><h3><b>Paypal Transaction Country</b></h3></td>
+                    <td class="tdCenter"><h3>{{order.country}}</h3></td>
+                </tr>
+                                <tr>
+                    <td class="tdRight"><h3><b>Paypal Payment Status</b></h3></td>
+                    <td class="tdCenter"><h3>{{order.payment_status}}</h3></td>
+                </tr>
+                                <tr>
+                    <td class="tdRight"><h3><b>Paypal Payment Type</b></h3></td>
+                    <td class="tdCenter"><h3>{{order.payment_type}}</h3></td>
+                </tr>
+                                <tr>
+                    <td class="tdRight"><h3><b>Paypal Payment Date</b></h3></td>
+                    <td class="tdCenter"><h3>{{order.payment_date}}</h3></td>
+                </tr>
+                                <tr>
+                    <td class="tdRight"><h3><b>Number of Distinct Items Ordered</b></h3></td>
+                    <td class="tdCenter"><h3>{{order.num_cart_items}}</h3></td>
+                </tr>
+
+
+            </table>
+        </div>
+
+        <!-- buttons -->
+        <div class="span4">
+            <button 
+                class="btn btn-block" 
+                onclick="window.location.href='shop.php#/orders'">
+                <i class="icon-chevron-left" /> back to orders
+            </button>
+        </div>
+    </div>
+</div>
+

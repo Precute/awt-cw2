@@ -1,0 +1,65 @@
+﻿<p class="text-info">
+    Add new merchandise to the store using this page.</b><br />
+    Currently, amendment and deletion of items can only be done directly from the database<br />
+</p>
+
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="span8">
+<form enctype="multipart/form-data">
+    <div id="error">
+                        <!-- error will be shown here ! -->
+    </div>
+<div class="form-group row">
+  <label for="productid" class="col-4 col-form-label">Product ID</label>
+  <div class="col-10">
+    <input class="form-control" type="text" placeholder=" Format: RN-XXXD; where X=A-Z, D=0-9" id="productid">
+  </div>
+
+  <label for="productname" class="col-4 col-form-label">Product Name</label>
+  <div class="col-10">
+    <input class="form-control" type="text" placeholder="Product Name" id="productname">
+  </div>
+
+  <label for="productdesc" class="col-4 col-form-label">Single-Line Product Description</label>
+  <div class="col-10">
+    <input class="form-control" type="text" placeholder="Single-Line Product Description" id="productdesc">
+  </div>
+
+  <label for="productprice" class="col-4 col-form-label">Product Price £ </label>
+  <div class="col-10">
+    <input class="form-control" type="number" placeholder="Product Price" id="productprice" min="0" step="0.01" data-number-to-fixed="2" >
+  </div>
+
+  <label for="productdesc" class="col-4 col-form-label">Product Details</label>
+  <div class="col-10">
+    <textarea class="form-control" rows="5" placeholder="Full Product Details" id="productdetails"></textarea>
+  </div>
+
+    <label for="photo" class="col-4 col-form-label">Product Image</label>
+    <div class="col-10">
+    <input type="file" class="form-control-file" name="image" id="image" aria-describedby="fileHelp">
+    <small id="prodimghelp" class="form-text text-muted">Upload an image of the product.</small>
+    </div>
+
+    </div>
+<div class="form-group row">
+  <div class="col-10">
+    <button type="submit" ng-click="store.addProduct()" id="addProd" class="btn btn-primary"><span class="glyphicon glyphicon-log-in"></span> &nbsp; Add Product</button>
+  </div>
+</div>
+
+</form>
+            
+        </div>
+
+        <!-- buttons -->
+        <div class="span4">
+            <button 
+                class="btn btn-block" 
+                onclick="window.location.href=''">
+                <i class="icon-chevron-left" /> back to store
+            </button>
+        </div>
+    </div>
+</div>

@@ -61,13 +61,17 @@ echo "  </script>\n";
     echo "      <a class=\"navbar-brand\" href=\"#\">$appname$userstr</a>\n";
     echo "    </div>\n";
     echo "    <ul class=\"nav navbar-nav\">\n";
-    echo "      <li class=\"active\"><a href='members.php?view=$user'>Home</a></li>\n";
+    echo "      <li><a href='members.php?view=$user'>Home</a></li>\n";
     echo "      <li><a href=\"shop.php\">Merchandise Store</a></li>\n";
     echo "      <li><a href='members.php'>Members</a></li>\n";
     echo "      <li><a href='friends.php'>Friends</a></li>\n";
     echo "      <li><a href='locationhistory.php'>Location History</a></li>\n";
     echo "      <li><a href='messages.php'>Messages</a></li>\n";
     echo "      <li><a href='profile.php'>Profile</a></li>\n";
+    if ($user === 'huseyin'){
+      echo "      <li><a href='shop.php#/orders'>Order Admin</a></li>\n";
+      echo "      <li><a href='shop.php#/addproduct'>Admin - Add Product</a></li>\n";
+    }
     echo "    </ul>\n";
     echo "    <ul class=\"nav navbar-nav navbar-right\">\n";
     echo "      <li><a href=\"logout.php\"><span class=\"glyphicon glyphicon-log-out\"></span> Logout</a></li>\n";
@@ -85,7 +89,7 @@ echo "  </script>\n";
     echo "      <a class=\"navbar-brand\" href=\"index.php\">$appname$userstr</a>\n";
     echo "    </div>\n";
     echo "    <ul class=\"nav navbar-nav\">\n";
-    echo "      <li class=\"active\"><a href=\"index.php\">Home</a></li>\n";
+    echo "      <li><a href=\"index.php\">Home</a></li>\n";
     echo "      <li><a href=\"shop.php\">Merchandise Store</a></li>\n";
     echo "    </ul>\n";
     echo "    <ul class=\"nav navbar-nav navbar-right\">\n";

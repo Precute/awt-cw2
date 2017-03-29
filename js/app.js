@@ -13,8 +13,20 @@ var storeApp = angular.module('RobinsNestStore', []).
         templateUrl: 'partials/product.htm',
         controller: storeController
       }).
+      when('/transaction/:transactionId', {
+        templateUrl: 'partials/transaction.htm',
+        controller:storeController
+      }).
       when('/cart', {
         templateUrl: 'partials/shoppingCart.htm',
+        controller: storeController
+      }).
+      when('/orders', {
+        templateUrl: 'partials/orders.htm',
+        controller: storeController
+      }).
+      when('/addproduct', {
+        templateUrl: 'partials/addproduct.htm',
         controller: storeController
       }).
       otherwise({
@@ -32,6 +44,8 @@ storeApp.factory("DataService", function () {
     // create shopping cart
     var myCart = new shoppingCart("RobinsNestStore");
 
+    // create orders
+    var myOrders = new orders();
     // enable PayPal checkout
     // note: the second parameter identifies the merchant; in order to use the 
     // shopping cart with PayPal, you have to create a merchant account with 
@@ -43,6 +57,7 @@ storeApp.factory("DataService", function () {
     // return data object with store and cart
     return {
         store: myStore,
-        cart: myCart
+        cart: myCart,
+        orders: myOrders
     };
 });

@@ -1,0 +1,27 @@
+﻿<p class="text-info">
+    Welcome to the Robin's Nest Merchandise Store Order Administration.<br />
+    All orders placed are displayed here. Staff are able to look at the Paypal transaction details by clicking on the Transaction ID of an order.<br />
+    If no transaction has been processed, this means the customer has cancelled the checkout process before completing payment. 
+</p>
+
+<p>
+    Search: <input ng-model="search">
+</p>
+
+<table class="table table-bordered">
+    <tr class="well">
+       <th>Order ID</th>
+<th>Total Items Ordered</th>
+<th>Total Cost</th>
+<th>Time Order Placed</th>
+<th>Transaction ID</th>
+    </tr>
+    <tr ng-repeat="order in orders.orders | orderBy:'id' | filter:search" >
+        <td class="tdRight">{{order.id}}</td>
+        <td class="tdRight">{{order.totalitems}}</td>
+        <td class="tdRight">{{order.totalprice}}</td>
+        <td class="tdRight">{{order.timeorderplaced}}</td>
+        <td class="tdRight"><span ng-hide="order.transactionid != null">No Transaction Processed</span><a href="#/transaction/{{order.TID}}">{{order.TID}}</a></td>
+    </tr>
+    
+</table>
