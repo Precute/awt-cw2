@@ -179,7 +179,10 @@ shoppingCart.prototype.checkoutPayPal = function (parms, clearCart) {
         business: parms.merchantID,
         upload: "1",
         rm: "2",
-        charset: "utf-8"
+        custom: this.placeOrder,
+        return: "http://mudfoot.doc.stu.mmu.ac.uk/students/arpalikh/AWT-CW2/shop.php#/store",
+        cancel_return: "http://mudfoot.doc.stu.mmu.ac.uk/students/arpalikh/AWT-CW2/shop.php#/store",
+        currency_code: "GBP"
     };
 
     // item data
@@ -190,16 +193,13 @@ shoppingCart.prototype.checkoutPayPal = function (parms, clearCart) {
         data["item_name_" + ctr] = item.name;
         data["quantity_" + ctr] = item.quantity;
         data["amount_" + ctr] = item.price.toFixed(2);
-        data["currency_code"] = "GBP";
-        data["return"] = "https://23.251.132.64/awt-cw2/shop.php#/store";
-        data["cancel_return"] = "https://23.251.132.64/awt-cw2/shop.php#/store"; 
-        data["custom"] = this.placeOrder;
+        //data["custom"] = this.placeOrder;
     }
 
     // build form
     var form = $('<form/></form>');
     form.attr("action", "https://www.sandbox.paypal.com/cgi-bin/webscr");
-    form.attr("method", "POST");
+    form.attr("method", "GET");
     form.attr("style", "display:none;");
     this.addFormFields(form, data);
     this.addFormFields(form, parms.options);
